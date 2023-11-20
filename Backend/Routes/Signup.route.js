@@ -10,26 +10,26 @@ const signupRouter=express.Router()
 
 signupRouter.post('/register', async(req,res)=>{
     try {
-        let {email, pass}=req.body
+        let {UserID,Name,mobile_Number,age,email,password}=req.body
         const existuser=await RegisterModel.find({email})
         if(existuser.length){
             return res.status(400).send({error:"User already exist"})
 
         }
-        if(checkPass(pass)){
-            const hash=bcrypt.hashSync(pass, 8)
-            const User=new RegisterModel({...req.body, pass:hash})
+        if(checkPass(password)){
+            const hash=bcrypt.hashSync(password, 8)
+            const User=new RegisterModel({...req.body, password:hash})
             await User.save()
             res.status(200).send("The new user has been registered")
         }
     } catch (error) {
         res.status(400).send("something wroung")
     }
-    return res.status(400).send({error:"Password should be atleast one uppercase one alpa and one number"})
+    //return res.status(400).send({error:"Password should be atleast one uppercase one alpa and one number"})
 })
 
-const checkPass=(pass)=>{
-    if(pass.length<8){
+const checkPass=(password)=>{
+    if(password.length<8){
         return false
     }
     let alpha="QWERTYUIOPASDFGHJKLZXCVBNM"
@@ -39,14 +39,14 @@ const checkPass=(pass)=>{
     let result2=false
     let result3=false
 
-    for(let i=0;i<pass.length;i++){
-        if(alpha.includes(pass[i])){
+    for(let i=0;i<password.length;i++){
+        if(alpha.includes(password[i])){
             result1=true
         }
-        if(number.includes(pass[i])){
+        if(number.includes(password[i])){
             result2=true
         }
-        if(char.includes(pass[i])){
+        if(char.includes(password[i])){
             result3=true
         }
     }

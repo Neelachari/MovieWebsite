@@ -1,15 +1,17 @@
 const express=require("express")
 const connection = require("./Config/db")
-const postRoute=require("./Routes/Signup.route")
-const movies=require("./Routes/movies.route")
-
+const signupRouter=require("./Routes/Signup.route")
+const movie=require("./Routes/movies.route")
+const cors=require("cors")
 const app=express()
 
 app.use(express.json())
 
-app.use("/users",postRoute)
+app.use(cors())
 
-app.use("/",movies )
+app.use("/users",signupRouter)
+
+app.use("/movies",movie)
 
 require("dotenv").config()
 
