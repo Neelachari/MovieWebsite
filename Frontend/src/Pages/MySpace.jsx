@@ -7,7 +7,7 @@ import {
     ModalHeader,
     ModalFooter,
     ModalBody,
-    ModalCloseButton,FormControl,FormLabel,Input
+    ModalCloseButton,FormControl,FormLabel,Input,InputRightElement,InputGroup
   } from '@chakra-ui/react'
 
 
@@ -15,6 +15,8 @@ import React from 'react'
 
 export const MySpace = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [show, setShow] = React.useState(false)
+    const handleClick = () => setShow(!show)
 
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
@@ -38,7 +40,7 @@ export const MySpace = () => {
       >
         <ModalOverlay style={{ backdropFilter: 'blur(1px)'}} />
         <ModalContent>
-          <ModalHeader>Create your account</ModalHeader>
+          <ModalHeader>Login your account</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <FormControl>
@@ -48,7 +50,18 @@ export const MySpace = () => {
 
             <FormControl mt={4}>
               <FormLabel>Enter Password</FormLabel>
-              <Input placeholder='Enter your Password' />
+              <InputGroup size='md'>
+      <Input
+        pr='4.5rem'
+        type={show ? 'text' : 'password'}
+        placeholder='Enter password'
+      />
+      <InputRightElement width='4.5rem'>
+        <Button h='1.75rem' size='sm' onClick={handleClick}>
+          {show ? 'Hide' : 'Show'}
+        </Button>
+      </InputRightElement>
+    </InputGroup>
             </FormControl>
           </ModalBody>
 

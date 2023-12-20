@@ -58,9 +58,9 @@ import {
       pb="10px"
       overflowX="hidden"
       overflowY="auto"
-      bg={useColorModeValue('black', 'gray.100')}
+      bg={useColorModeValue('black', 'gray.300')}
       borderColor={useColorModeValue('inherit', 'gray.700')}
-      borderRightWidth="1px"
+      borderRightWidth="0.3px"
       w="153px"
       box-shadow= 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'
       DrawerOverlay="20px"
@@ -86,12 +86,24 @@ import {
         <Link to="/Login">
         <NavItem  icon={FaRegCircleUser}>My Space</NavItem>
         </Link>
+        <Link to="/explore">
         <NavItem  icon={CiSearch}>Search</NavItem>
+        </Link>
+        <Link to="/home">
         <NavItem  icon={GoHomeFill}>Home</NavItem>
+        </Link>
+        <Link to="/shows">
         <NavItem  icon={LiaTvSolid}>TV</NavItem>
+        </Link>
+        <Link to="/movies">
         <NavItem  icon={PiFilmSlateFill}>Movies</NavItem>
+        </Link>
+        <Link to="/home">
         <NavItem  icon={MdSportsVolleyball}>Sports</NavItem>
+        </Link>
+        <Link to="/categories">
         <NavItem  icon={BiSolidCategory}>Categories</NavItem>
+        </Link>
       </Flex>
     </Box>
   );
@@ -118,8 +130,8 @@ import {
       >
         {icon && (
           <Icon
-            mx="2"
-            boxSize="4"
+            mx="3"
+            boxSize="5"
             _groupHover={{
               color: color
             }}
