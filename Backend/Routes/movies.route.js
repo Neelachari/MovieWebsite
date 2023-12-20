@@ -14,7 +14,7 @@ MoviesRoute.get('/movie', async (req, res) => {
 })
 
 
-MoviesRoute.post('/movie',auth, async (req, res) => {
+MoviesRoute.post('/movie', async (req, res) => {
     let postData =new MoviesModal (req.body)
     console.log(postData)
     await postData.save()
