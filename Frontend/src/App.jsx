@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './Pages/Navbar'
 import { AllRoutes } from './Routes/AllRoutes'
+import Navbar2 from './Pages/Navbar2'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <>
     <Navbar/>
     <AllRoutes/>
+    {/* <Navbar2/> */}
     </>
   )
 }

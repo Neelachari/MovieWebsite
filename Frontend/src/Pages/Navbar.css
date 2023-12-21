@@ -4,3 +4,11 @@
     border: 1px solid red;
     /* align-items: left; */
 }
+.hidden-text{
+    visibility: hidden; /* or opacity: 0; */
+  font-family: 'Chakra', sans-serif; /* Use the Chakra font */
+  transition: visibility 0.3s ease; /* or transition: opacity 0.3s ease; */
+}
+.hidden-text:_hover {
+    visibility: visible; 
+  }

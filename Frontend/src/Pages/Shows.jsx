@@ -3,7 +3,7 @@ import React from 'react'
 
 export const Shows = () => {
   return (
-    <div style={{background:"black", height:"100vh"}}>
+    <div style={{width:"85vw", marginLeft:"17%", border:"2px solid red", background:"black", height:"100vh" }}>
       <Center><Heading color={"white"}>TV</Heading></Center>
     </div>
   )

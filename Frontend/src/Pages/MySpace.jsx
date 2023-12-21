@@ -23,10 +23,11 @@ export const MySpace = () => {
 
 
   return (
-    <Center style={{background:"black", height:"100vh"}}>
+    <Box style={{width:"85vw", marginLeft:"15%", border:"2px solid red" }}>
+    <Center style={{background:"black", height:"100vh" , }}>
         
        
-       <Box>
+       <Box >
        <Center><img width="80%" src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/feature/myspace/my_space_login_in.png" alt="" /></Center> 
        <Center > <h3 style={{color:"white", padding:"10px"}}>Login to Disney+ Hotstar</h3></Center>
        <Center> <Text color="gray.500" p="20px">Start watching from where you left off, personalise for kids and more</Text> </Center>
@@ -37,13 +38,14 @@ export const MySpace = () => {
         finalFocusRef={finalRef}
         isOpen={isOpen}
         onClose={onClose}
+        
       >
         <ModalOverlay style={{ backdropFilter: 'blur(1px)'}} />
-        <ModalContent>
+        <ModalContent  style={{ background: 'transparent', color:"white", border:"1px solid blue"}} >
           <ModalHeader>Login your account</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
+          <ModalBody pb={6}   >
+            <FormControl >
               <FormLabel>Enter Email</FormLabel>
               <Input ref={initialRef} placeholder='Enter your E-mail' />
             </FormControl>
@@ -76,5 +78,6 @@ export const MySpace = () => {
 
         </Box>       
     </Center>
+    </Box>
   )
 }
