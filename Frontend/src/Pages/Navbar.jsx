@@ -89,7 +89,7 @@ import {
         <Link to="/explore">
         <NavItem  icon={CiSearch}>Search</NavItem>
         </Link>
-        <Link to="/home">
+        <Link to="/">
         <NavItem  icon={GoHomeFill}>Home</NavItem>
         </Link>
         <Link to="/shows">
@@ -98,7 +98,7 @@ import {
         <Link to="/movies">
         <NavItem  icon={PiFilmSlateFill}>Movies</NavItem>
         </Link>
-        <Link to="/home">
+        <Link to="/">
         <NavItem  icon={MdSportsVolleyball}>Sports</NavItem>
         </Link>
         <Link to="/categories">

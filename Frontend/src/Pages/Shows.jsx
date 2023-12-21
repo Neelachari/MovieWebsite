@@ -1,7 +1,10 @@
+import { Center, Heading } from '@chakra-ui/react'
 import React from 'react'
 
 export const Shows = () => {
   return (
-    <div>Shows</div>
+    <div style={{background:"black", height:"100vh"}}>
+      <Center><Heading color={"white"}>TV</Heading></Center>
+    </div>
   )
 }

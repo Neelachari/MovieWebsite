@@ -10,9 +10,9 @@ import { Categories } from '../Pages/Categories'
 export const AllRoutes = () => {
   return (
     <Routes>
+         <Route path="/" element={<Home/>} ></Route>
         <Route path="/Login" element={<MySpace/>} ></Route>
         <Route path="/explore" element={<Explore/>} ></Route>
-        <Route path="/home" element={<Home/>} ></Route>
         <Route path="/shows" element={<Shows/>} ></Route>
         <Route path="/movies" element={<Movies/>} ></Route>
         <Route path="/categories" element={<Categories/>} ></Route>

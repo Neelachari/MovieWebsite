@@ -14,11 +14,29 @@ MoviesRoute.get('/movie', async (req, res) => {
 })
 
 
+MoviesRoute.post('/Manymovies', async (req, res) => {
+    try {
+        const ArrayData= req.body
+        const SaveData=await MoviesModal.insertMany(ArrayData)
+        res.status(200).send({ postData: SaveData, message: "Movie is added  Many Successfully" })
+    } catch (error) {
+
+        res.status(400).send({ error: error, message: "Movie is Not Posted" })
+    }
+   
+})
+
 MoviesRoute.post('/movie', async (req, res) => {
-    let postData =new MoviesModal (req.body)
-    console.log(postData)
-    await postData.save()
-    res.status(200).send({ postData: postData, message: "Movie is added Successfully" })
+    try {
+       let postData =new MoviesModal(req.body)
+       console.log(postData)
+       await postData.save()
+       res.status(200).send({ postData: postData, message: "Movie is added Successfully" })
+    } catch (error) {
+
+        res.status(400).send({ error: error, message: "Movie is Not Posted" })
+    }
+    
 })
 
 
