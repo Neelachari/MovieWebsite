@@ -23,7 +23,7 @@ export const MySpace = () => {
 
 
   return (
-    <Box style={{width:"85vw", marginLeft:"15%", border:"2px solid red" }}>
+    <Box style={{width:"87.5vw", marginLeft:"12.5%", border:"2px solid red",  background:"black", height:"auto" }}>
     <Center style={{background:"black", height:"100vh" , }}>
         
        
@@ -41,7 +41,7 @@ export const MySpace = () => {
         
       >
         <ModalOverlay style={{ backdropFilter: 'blur(1px)'}} />
-        <ModalContent  style={{ background: 'transparent', color:"white", border:"1px solid blue"}} >
+        <ModalContent  style={{ background: 'transparent', color:"white" }} >
           <ModalHeader>Login your account</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}   >

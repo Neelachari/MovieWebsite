@@ -35,7 +35,7 @@ import {
     const { isOpen, onClose, onOpen } = useDisclosure();
   
     return (
-      <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} w={"15%"} height={"0px"} mr={"0px"} ml={"0px"}>
+      <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} w={"12%"} height={"0px"} mr={"0px"} ml={"0px"}>
         <SidebarContent display={{ base: 'none', md: 'unset' }} />
         <Drawer isOpen={isOpen} onClose={onClose} placement="left">
           <DrawerOverlay />
@@ -95,10 +95,10 @@ import {
       bg={useColorModeValue('black', 'gray.100')}
       borderColor={useColorModeValue('inherit', 'gray.1000')}
       // borderRightWidth="0.5px"
-      // borderRight={"1px solid red"}
-      w="15%"
+      borderRight={"1px solid gray"}
+      w="12%"
       mr={"0px"}
-      box-shadow ='rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;'
+     
       DrawerOverlay="20px"
       {...props}
     >
@@ -119,7 +119,7 @@ import {
               />
         </Text>
       </Flex>
-      <Flex direction="column" as="nav" fontSize="md" color="gray.600" mt="30px" aria-label="Main Navigation" pb="15px" >
+      <Flex direction="column" as="nav" fontSize="md" color="gray.600" mt="30px" aria-label="Main Navigation" pb="15px"  box-shadow ='rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;' >
       
         <Link to="/Login">
         <NavItem  icon={FaRegCircleUser}>My Space</NavItem>
@@ -153,6 +153,7 @@ import {
     const { icon, children } = props;
     console.log(icon, children, "from me")
     return (
+      <Box>
       <Flex
         align="center"
         px="4"
@@ -164,7 +165,8 @@ import {
         color={useColorModeValue('inherit', 'gray.400')}
         _hover={{
           bg: useColorModeValue('gray.900', 'gray.900'),
-          color: useColorModeValue('white', 'white.200')
+          color: useColorModeValue('white', 'white.200'),
+          
           
         }}
       >
@@ -179,7 +181,8 @@ import {
           />
           
         )}
-      <Box class="hidden-text"> {children}</Box>
+      <Box className="hidden-text">{children}</Box>
       </Flex>
+      </Box>
     );
   };
