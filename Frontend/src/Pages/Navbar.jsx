@@ -35,7 +35,7 @@ import {
     const { isOpen, onClose, onOpen } = useDisclosure();
   
     return (
-      <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')} w={"12%"} height={"0px"} mr={"0px"} ml={"0px"}>
+      <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}    height={"0px"} mr={"0px"}  >
         <SidebarContent display={{ base: 'none', md: 'unset' }} />
         <Drawer isOpen={isOpen} onClose={onClose} placement="left">
           <DrawerOverlay />
@@ -69,6 +69,7 @@ import {
               icon={<FiMenu />}
               size="md"
               color={"white"}
+              // border={"3px solid cyan"}
               bg={"rgba(66, 153, 225, 0.6)"}
             />
           
@@ -95,15 +96,15 @@ import {
       bg={useColorModeValue('black', 'gray.100')}
       borderColor={useColorModeValue('inherit', 'gray.1000')}
       // borderRightWidth="0.5px"
-      borderRight={"1px solid gray"}
-      w="12%"
+      // borderRight={"1px solid gray"}
+      // w="12%"
       mr={"0px"}
-     
-      DrawerOverlay="20px"
+      
+      // DrawerOverlay="20px"
       {...props}
     >
       
-      <Flex px="4" py="5" align="center">
+      <Flex px="4" py="5" align="center" >
        
         <Text
           fontSize="2xl"

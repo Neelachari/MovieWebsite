@@ -1,12 +1,12 @@
 
-/* .hidden-text{
+ /* .hidden-text{
     visibility: hidden; 
   font-family: 'Chakra', sans-serif; 
   transition: visibility 0.1s ease; 
-} */
+} 
 
 
-/* .hidden-text:hover {
+.hidden-text:hover {
   visibility: visible; 
   
 } */
@@ -30,7 +30,7 @@ margin-top: 30px;
   }
   .zoom-image{
     width: 100%; /* Set the width of the image */
-    transition: transform 0.3s ease-in-out; /* Define a smooth transition effect for the transform property */
+    transition: transform 0.5s ease-in-out; /* Define a smooth transition effect for the transform property */
   }
   .zoom-image:hover {
     transform: scale(1.3); /* Apply a scale transformation on hover to create the zoom effect */
