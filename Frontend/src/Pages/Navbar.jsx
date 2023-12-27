@@ -65,7 +65,7 @@ console.log(videoId)
           <SidebarContent w="full" borderRight="none" />
         </DrawerContent>
       </Drawer>
-      <Box ml={{ base: 0, md: 60 }} transition=".3s ease" bg={useColorModeValue('black', 'black')}>
+      <Box ml={{ base: 0, md: 60 }} transition=".3s ease"  >
           <IconButton
             aria-label="Menu"
             display={{ base: 'inline-flex', md: 'none' }}
@@ -161,15 +161,17 @@ const SidebarContent = ({ ...props }) => (
         </Flex>
       </Box>
 
-      <Flex px="4" py="5" mt={10} justifyContent="center" alignItems="center">
-        <Menu>
+      <Flex px="4" py="5" mt={10} justifyContent="center" alignItems="center" >
+        <Menu  >
           <MenuButton
             as={Button}
             size={'sm'}
+            border={"2px solid blue"}
             rounded={'full'}
             variant={'link'}
             cursor={'pointer'}
-            _hover={{ textDecoration: 'none' }}
+            _hover={{ bg: useColorModeValue('gray.100', 'gray.900'), color: useColorModeValue('black', 'white.200'),textDecoration: 'none' }}
+            
           >
             <Avatar
               size={'sm'}
@@ -177,14 +179,14 @@ const SidebarContent = ({ ...props }) => (
               src="https://avatars2.githubusercontent.com/u/37842853?v=4"
             />
           </MenuButton>
-          <MenuList fontSize={17} zIndex={5555}>
-            <MenuItem as={Link} to="/Login">
+          <MenuList fontSize={15} zIndex={5555} background= 'transparent'>
+            <MenuItem as={Link} to="/Login"   background= 'transparent' color="white" >
               Login
             </MenuItem>
-            <MenuItem as={Link} to="#">
+            <MenuItem as={Link} to="#"  background= 'transparent' color="white" >
               SignUp
             </MenuItem>
-            <MenuItem>Logout</MenuItem>
+            <MenuItem  background= 'transparent' color="white">Logout</MenuItem>
           </MenuList>
         </Menu>
       </Flex>
@@ -201,7 +203,6 @@ const NavItem = (props) => {
       align="center"
       px="4"
       py="3"
-      
       cursor="pointer"
       role="group"
       fontWeight="semibold"
