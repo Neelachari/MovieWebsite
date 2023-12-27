@@ -1,4 +1,4 @@
-import { Button, Center ,Box, Text } from '@chakra-ui/react'
+import { Button, Center ,Box, Text, useColorModeValue } from '@chakra-ui/react'
 import { useDisclosure } from '@chakra-ui/react'
 import {
     Modal,
@@ -23,7 +23,7 @@ export const MySpace = () => {
 
 
   return (
-    <Box style={{width:"87.5vw", marginLeft:"12.5%", border:"2px solid red",  background:"black", height:"auto" }}>
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"10%"} marginLeft={"10%"}  bg={useColorModeValue('black', 'gray.800')}>
     <Center style={{background:"black", height:"100vh" , }}>
         
        

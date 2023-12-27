@@ -1,4 +1,4 @@
-import { Box, Center, Heading } from '@chakra-ui/react'
+import { Box, Center, Heading, useColorModeValue } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
@@ -14,7 +14,7 @@ export const Movies = () => {
 
 
   return (
-    <div style={{width:"87.5vw", marginLeft:"12.5%", border:"2px solid red",  background:"black", height:"auto" }}>
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')}>
        <Box className='Movies'>
       {
         Movies.length>0 && Movies.map((e)=>{
@@ -22,6 +22,6 @@ export const Movies = () => {
         }  )
       }
       </Box>
-    </div>
+    </Box>
   )
 }

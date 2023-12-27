@@ -13,8 +13,9 @@ function App() {
   return (
     <>
     <Navbar/>
-    <AllRoutes/>
     {/* <Navbar2/> */}
+    <AllRoutes/>
+    
     </>
   )
 }

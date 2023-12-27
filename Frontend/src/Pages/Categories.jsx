@@ -1,4 +1,4 @@
-import { Box, Center, Heading } from '@chakra-ui/react'
+import { Box, Center, Heading, useColorModeValue } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import "./Navbar.css"
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,14 +14,14 @@ export const Categories = () => {
 
 
   return (
-    <div style={{width:"87.5vw", marginLeft:"12.5%", border:"2px solid red",  background:"black", height:"auto" }}>
-      <Box className='Movies'>
-      {
-        Movies.length>0 && Movies.map((e)=>{
-          return <MoviesCard  key={e.id} {...e}/>
-        }  )
-      }
-      </Box>
-    </div>
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')}>
+    <Box className='Movies'>
+   {
+     Movies.length>0 && Movies.map((e)=>{
+       return <MoviesCard  key={e.id} {...e}/>
+     }  )
+   }
+   </Box>
+ </Box>
   )
 }

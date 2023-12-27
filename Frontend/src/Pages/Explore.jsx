@@ -1,4 +1,4 @@
-import { Box, InputGroup, InputLeftElement, Input } from '@chakra-ui/react'
+import { Box, InputGroup, InputLeftElement, Input, useColorModeValue } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { CiSearch } from "react-icons/ci"
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,7 +15,7 @@ export const Explore = () => {
 
 
   return (
-    <Box style={{width:"87.5vw", marginLeft:"12.5%", border:"2px solid red",  background:"black", height:"auto" }}>
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')}  >
       <Box >
          <InputGroup>
     <InputLeftElement pointerEvents='none'  mt="25px" >
@@ -24,13 +24,15 @@ export const Explore = () => {
     <Input background="gray.800" w="75%" height="50px" color="white" ml="5%" type='text' placeholder='Movies, shows and more' mt="20px" />
   </InputGroup>
     </Box>
-    <Box className='Movies'>
-      {
+    <Box className='Movies'> 
+         {
         Movies.length>0 && Movies.map((e)=>{
           return <MoviesCard  key={e.id} {...e}/>
         }  )
-      }
-      </Box>
+      } 
+
+         {/* //Cards Render */}
+         </Box> 
     </Box>
   )
 }

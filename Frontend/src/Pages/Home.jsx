@@ -1,5 +1,5 @@
 
-import { Box, Center, Flex, Heading } from '@chakra-ui/react'
+import { Box, Center, Flex, Heading, useColorModeValue } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
@@ -24,64 +24,37 @@ console.log(videoId)
 
 
   return (
-    <Flex style={{width:"100%"}}>
-    <div style={{width:"100%",  border:"2px solid red", paddingLeft:"12%",  background:"black", height:"auto" }}>
-      <Box>
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')} >
+       <Box   >
 
-       
-        {/* <iframe
-          src={`https://www.youtube.com/embed/9ix7TUGVYIo?si=_sThYHaKH7RLyRJw/embed/VIDEO_ID?autoplay=1`}
-          title="YouTube video player"
-          frameborder="0"
-          allowfullscreen
-          width={'100%'}
-          height={"400px"}
-          allow="autoplay"
-        ></iframe> */}
-
-{/* <iframe
-            title="Vimeo Video"
-            src="https://www.youtube.com/embed/9ix7TUGVYIo?si=_sThYHaKH7RLyRJw/embed/VIDEO_ID?autoplay=1" // Add the loop parameter
-            width="100%"
-            height="100%"
-            controls={false}
-            allowFullScreen
-          ></iframe> */}
-           <video
+            <video
           style={{ width: "100%"}}
-          loop
-          playsInline
-          autoPlay
+           loop
+           playsInline
+           autoPlay
           muted   // Add the muted attribute to enable autoplay on mobile devices
-          poster="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_1400,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/we-are-cult-logo/promo-video-poster.jpg"
-        >
-          <source
+           poster="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_1400,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/we-are-cult-logo/promo-video-poster.jpg"
+         >
+           <source
             src="https://cdn-images.cure.fit/www-curefit-com/video/upload/c_fill,w_1400,ar_1.77,q_auto:eco,dpr_1,vc_auto,f_auto/video/test/we-are-cult-web.mp4"
-            type="video/mp4"
-          />
-        </video>
+             type="video/mp4"
+           />
+        </video> 
        
       
     
-     {/* <video width="100%" height="400" controls autoPlay muted>
-       <iframe
-        src="https://www.youtube.com/embed/9ix7TUGVYIo?si=_sThYHaKH7RLyRJw/embed/VIDEO_ID?autoplay=1"
-        width="100%"
-        height="400"
-        title="External Content"
-        allowFullScreen
-      ></iframe>
-      Your browser does not support the video tag.
-    </video> */}
+
       </Box>
-      <Box className='Movies'>
-      {
+         <Box   className='Movies'> 
+         {
         Movies.length>0 && Movies.map((e)=>{
           return <MoviesCard  key={e.id} {...e}/>
-        }  )
-      }
-      </Box>
-    </div>
-    </Flex>
+           }  )
+          } 
+
+         {/* //Cards Render */}
+        </Box> 
+    </Box>
+         
   )
 }
