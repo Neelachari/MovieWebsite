@@ -183,7 +183,7 @@ const SidebarContent = ({ ...props }) => (
             <MenuItem as={Link} to="/Login"   background= 'transparent' color="white" >
               Login
             </MenuItem>
-            <MenuItem as={Link} to="#"  background= 'transparent' color="white" >
+            <MenuItem as={Link} to="/SignUp"  background= 'transparent' color="white" >
               SignUp
             </MenuItem>
             <MenuItem  background= 'transparent' color="white">Logout</MenuItem>

@@ -6,12 +6,14 @@ import { Home } from '../Pages/Home'
 import { Shows } from '../Pages/Shows'
 import { Movies } from '../Pages/Movies'
 import { Categories } from '../Pages/Categories'
+import { SignUp } from '../Pages/SignUp'
 
 export const AllRoutes = () => {
   return (
     <Routes>
          <Route path="/" element={<Home/>} ></Route>
         <Route path="/Login" element={<MySpace/>} ></Route>
+        <Route path="/SignUp" element={<SignUp/>} ></Route>
         <Route path="/explore" element={<Explore/>} ></Route>
         <Route path="/shows" element={<Shows/>} ></Route>
         <Route path="/movies" element={<Movies/>} ></Route>
