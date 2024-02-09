@@ -40,6 +40,19 @@ margin-top: 30px;
     transform: scale(1.3); /* Apply a scale transformation on hover to create the zoom effect */
   }
 
+#navbox NavItem{
+  @media (max-width: 768px) {
+  font-size: x-small;
+   
+  }
+
+  @media (max-width: 550px) {
+  
+  }
+
+}
+ 
+
   /* .details{
     visibility: hidden; 
     font-family: 'Chakra', sans-serif; 

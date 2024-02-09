@@ -57,15 +57,15 @@ console.log(videoId)
   console.log(Movies)
 
   return (
-    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"90vw"}>
-      <SidebarContent display={{ base: 'none', md: 'unset' }} />
+    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100vw"} >
+      <SidebarContent display={{ base: 'none', md: 'unset' }}  />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
         <DrawerContent>
           <SidebarContent w="full" borderRight="none" />
         </DrawerContent>
       </Drawer>
-      <Box ml={{ base: 0, md: 60 }} transition=".3s ease"  >
+      <Box ml={{ base: 0, md: 60 }} transition=".3s ease" background={"black"}  >
           <IconButton
             aria-label="Menu"
             display={{ base: 'inline-flex', md: 'none' }}
@@ -73,20 +73,8 @@ console.log(videoId)
             icon={<FiMenu />}
             color={"white"}
             size="md"
-            bg={"rgba(66, 153, 225, 0.6)"}
+            bg={"black"}
           />
-
-         
-
-        {/* <Box as="main" p={14} minH="auto"  bg={useColorModeValue('black', 'gray.800')}  className='Movies'> */}
-        {/* {
-        Movies.length>0 && Movies.map((e)=>{
-          return <MoviesCard  key={e.id} {...e}/>
-        }  )
-      } */}
-
-         {/* //Cards Render */}
-        {/* </Box> */}
       </Box>
     </Box>
   );
@@ -110,7 +98,7 @@ const SidebarContent = ({ ...props }) => (
     {...props}
   >
     <VStack h="full"  alignItems="flex-start" justifyContent="space-between"  >
-      <Box w="full">
+      <Box w="full" id='navbox'>
         <Flex px="4" py="5" align="center">
           {/* <Icon as={RiFlashlightFill} h={8} w={8} /> */}
           <Text
@@ -166,6 +154,7 @@ const SidebarContent = ({ ...props }) => (
           <MenuButton
             as={Button}
             size={'sm'}
+            
             border={"2px solid blue"}
             rounded={'full'}
             variant={'link'}

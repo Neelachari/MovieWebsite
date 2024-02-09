@@ -11,6 +11,7 @@ export const Explore = () => {
   const Movies=useSelector((store)=> store.productReducer.movies)
   const [searchParms]=useSearchParams()
   const [query,setQuery]=useState("")
+  const [Search, setSearch] = useState("");
 
   // useEffect(()=>{
   //   dispatch(getMovies())
@@ -37,20 +38,26 @@ export const Explore = () => {
 
   },[query])
 
+  const handleChange=(value)=>{
+   setSearch(value)
+  }
+
+  const filtredData=Movies.filter((e)=> e.Title.toLowerCase().includes(Search.toLowerCase()))
+
 
   return (
-    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')}  >
+    <Box as="main"  minH="1000px" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')}  >
       <Box >
          <InputGroup>
     <InputLeftElement pointerEvents='none'  mt="25px" >
-   <Box > <CiSearch style={{color:"white", fontSize:"30px", marginLeft:"125px"}} /></Box>
+   {/* <Box > <CiSearch  display={{ base: 'none', md: 'unset' }} style={{color:"white", fontSize:"30px", marginLeft:"125px"}} /></Box> */}
     </InputLeftElement>
-    <Input background="gray.800" w="75%" height="50px" color="white" ml="5%" type='text' placeholder='Movies, shows and more' mt="20px" onChange={(e)=>setQuery(e.target.value)} />
+    <Input background="gray.800" w="75%" height="50px" color="white" ml="5%" type='text' placeholder='Movies, shows and more' mt="20px" onChange={(e)=>handleChange(e.target.value)} />
   </InputGroup>
     </Box>
     <Box className='Movies'> 
          {
-        Movies.length>0 && Movies.map((e)=>{
+        filtredData.length>0 && filtredData.map((e)=>{
           return <MoviesCard  key={e.id} {...e}/>
         }  )
       } 
@@ -60,3 +67,4 @@ export const Explore = () => {
     </Box>
   )
 }
+// (e)=>setQuery(e.target.value)

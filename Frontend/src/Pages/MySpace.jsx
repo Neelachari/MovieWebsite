@@ -23,12 +23,13 @@ export const MySpace = () => {
 
 
   return (
-    <Box as="main"  height="auto" w={"100%"}  marginLeft={"10%"}  bg={useColorModeValue('black', 'gray.800')}>
+    <Box as="main" height="auto" w={"110%"}     bg={useColorModeValue('black', 'gray.800')}  >
+      
     <Center style={{background:"black", height:"100vh" , }}>
         
        
        <Box >
-       <Center><img width="80%" src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/feature/myspace/my_space_login_in.png" alt="" /></Center> 
+       <Center><img width="100%" src="https://img10.hotstar.com/image/upload/f_auto,q_90,w_384/feature/myspace/my_space_login_in.png" alt="" /></Center> 
        <Center > <h3 style={{color:"white", padding:"10px"}}>Login to Disney+ Hotstar</h3></Center>
        <Center> <Text color="gray.500" p="20px">Start watching from where you left off, personalise for kids and more</Text> </Center>
            <Center><Button colorScheme='blue' width="45%" onClick={onOpen} >Login</Button></Center>
