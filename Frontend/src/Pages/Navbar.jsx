@@ -57,7 +57,7 @@ console.log(videoId)
   console.log(Movies)
 
   return (
-    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100vw"} >
+    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100vw"} border={"1px solid red"} >
       <SidebarContent display={{ base: 'none', md: 'unset' }}  />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
@@ -65,7 +65,7 @@ console.log(videoId)
           <SidebarContent w="full" borderRight="none" />
         </DrawerContent>
       </Drawer>
-      <Box ml={{ base: 0, md: 60 }} transition=".3s ease" background={"black"}  >
+      <Box ml={{ base: 0, md: 'auto' }} transition=".3s ease" background={"black"}  >
           <IconButton
             aria-label="Menu"
             display={{ base: 'inline-flex', md: 'none' }}
@@ -74,6 +74,7 @@ console.log(videoId)
             color={"white"}
             size="md"
             bg={"black"}
+            
           />
       </Box>
     </Box>

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   FormControl,
   FormLabel,
@@ -14,8 +14,47 @@ import {
   Flex,
   Box
 } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { postSignup } from '../Redux/Auth/Action';
+
+const initialState={
+  UserID:"",
+  Name:"",
+  mobile_Number:"",
+  age:"",
+  email:"",
+  password:"",
+}
+
+// UserID:{type:Number,required:true},
+// Name:{type:String,required:true},
+// email:{type:String,required:true},
+// mobile_Number:{type:Number,required:true},
+// age:{type:Number,required:true},
+// password:{type:String,required:true},
 
 export const SignUp = () => {
+  const [user,setuser]=React.useState(initialState) 
+  const dispatch= useDispatch()
+
+
+
+ const handleChange=(e)=>{
+  const {name,value}=e.target
+  setuser(prev => {
+    return {...prev, [name] : name=== "age" && name==="mobile_Number"  ? +value :value}
+})
+ }
+
+ const handleSubmit=(e)=>{
+  e.preventDefault()
+  dispatch(postSignup(user))
+ console.log(user)
+}
+
+
+
+
   return (
     <Box as="main"  height="auto" w={"100vw"} paddingLeft={"8%"}  bg={"black"} border={"0.1px solid blue"} >
     <Stack minH="70vh"  paddingLeft={"8%"} marginTop={"3%"} direction={{ base: 'column-reverse', md: 'row' }} border={"1px solid blue"} background= 'transparent' color="white" backdropFilter={"blur(1px)"}>
@@ -41,19 +80,23 @@ export const SignUp = () => {
             <VStack spacing={1} w="100%">
             <FormControl id="email">
                 <FormLabel>Name</FormLabel>
-                <Input rounded="md" type="text" placeholder='Enter your Name' />
+                <Input rounded="md" type="text" placeholder='Enter your Name' name='Name' value={user.Name} onChange={(e)=>handleChange(e)} />
               </FormControl>
               <FormControl id="email">
                 <FormLabel>Mobile number</FormLabel>
-                <Input rounded="md" type="number" placeholder='Enter your Number' />
+                <Input rounded="md" type="number" placeholder='Enter your Number'  name='mobile_Number' value={user.mobile_Number} onChange={(e)=>handleChange(e)} />
               </FormControl>
               <FormControl id="email">
                 <FormLabel>Email</FormLabel>
-                <Input rounded="md" type="email" placeholder='Enter your email' />
+                <Input rounded="md" type="email" placeholder='Enter your email' name='email' value={user.email} onChange={(e)=>handleChange(e)}/>
+              </FormControl>
+              <FormControl id="password">
+                <FormLabel>Age</FormLabel>
+                <Input rounded="md" type="number" placeholder='Enter your Age' name='age' value={user.age} onChange={(e)=>handleChange(e)}/>
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
-                <Input rounded="md" type="password" placeholder='Enter your password' />
+                <Input rounded="md" type="password" placeholder='Enter your password' name='password' value={user.password} onChange={(e)=>handleChange(e)}/>
               </FormControl>
             </VStack>
             <VStack w="100%">
@@ -71,6 +114,7 @@ export const SignUp = () => {
                 }}
                 rounded="md"
                 w="100%"
+                onClick={handleSubmit}
               >
                 Sign in
               </Button>

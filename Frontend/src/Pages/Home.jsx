@@ -1,5 +1,5 @@
 
-import { Box, Center, Flex, Heading, useColorModeValue } from '@chakra-ui/react'
+import { Box, Center, CircularProgress, Flex, Heading, useColorModeValue } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
@@ -10,6 +10,7 @@ export const Home = () => {
   const [data,setData]=useState([])
   const dispatch=useDispatch()
   const Movies=useSelector((store)=> store.productReducer.movies)
+  const isLoading=useSelector((store)=> store.productReducer.isLoading)
   
   const videoId = new URL("https://www.youtube.com/embed/tABlzTH8G9o?si=frgn1yoLc3W6RwJS").searchParams.get("v");
 
@@ -47,10 +48,18 @@ console.log(videoId)
       </Box>
          <Box   className='Movies'> 
          {
-        Movies.length>0 && Movies.map((e)=>{
-          return <MoviesCard  key={e.id} {...e}/>
-           }  )
+
+        // Movies.length>0 && Movies.map((e)=>{
+        //   return <MoviesCard  key={e.id} {...e}/>
+        //    }  )
+
+           isLoading ?  <Box  as="main"  minHeight="500px" w={"100%"} paddingLeft={"500px"} mt={"80px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /></Box> : Movies.length>0 && Movies?.map((e)=>{
+            return <MoviesCard  key={e.id} {...e}/>
+          }  ) 
+
+           
           } 
+          
 
          {/* //Cards Render */}
         </Box> 
