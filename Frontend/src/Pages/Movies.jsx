@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
 import { MoviesCard } from '../Components/MoviesCard'
 import './Movie.css'
-import { SkelitonCard } from '../Components/SkelitonCard'
+
 
 export const Movies = () => {
   const dispatch=useDispatch()

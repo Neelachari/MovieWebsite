@@ -16,9 +16,9 @@ import {
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
 import { postSignup } from '../Redux/Auth/Action';
+import { useToast } from '@chakra-ui/react'
 
 const initialState={
-  UserID:"",
   Name:"",
   mobile_Number:"",
   age:"",
@@ -36,7 +36,7 @@ const initialState={
 export const SignUp = () => {
   const [user,setuser]=React.useState(initialState) 
   const dispatch= useDispatch()
-
+  const toast = useToast()
 
 
  const handleChange=(e)=>{
@@ -49,6 +49,14 @@ export const SignUp = () => {
  const handleSubmit=(e)=>{
   e.preventDefault()
   dispatch(postSignup(user))
+  toast({
+    position: 'top',
+    render: () => (
+      <Box color='white' p={3} bg='blue.500'>
+       { user.Name} youe account created successfully! 😊 
+      </Box>
+    ),
+  })
  console.log(user)
 }
 

@@ -57,7 +57,7 @@ console.log(videoId)
   console.log(Movies)
 
   return (
-    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100vw"} border={"1px solid red"} >
+    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100%"} >
       <SidebarContent display={{ base: 'none', md: 'unset' }}  />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />

@@ -23,7 +23,7 @@ export const MySpace = () => {
 
 
   return (
-    <Box as="main" w={"100%"}     bg={useColorModeValue('black', 'gray.800')}  >
+    <Box as="main" w={"98.5vw"} paddingLeft={"13%"}    bg={useColorModeValue('black', 'gray.800')}  >
       
     <Center style={{background:"black", height:"100vh" , }}>
         

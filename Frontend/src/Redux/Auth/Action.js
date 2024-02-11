@@ -26,8 +26,10 @@ export const postSignup=(user)=>(dispatch)=>{
         dispatch({type:POST_SIGN_SUCCESS, payload:res.data})
     })
     .catch((err)=>{
-        dispatch({type:LOGIN_FAILURE})
+        console.error("Signup Error:", err);
+        dispatch({type: LOGIN_FAILURE, payload: err.message || "Something went wrong"})
     })
+    
 
 
 }
