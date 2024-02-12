@@ -37,6 +37,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
 import { MoviesCard } from '../Components/MoviesCard'
 import "./Navbar.css"
+import Logo from "../Imges/PLY.png"
 
 
 export default function Navbar() {
@@ -111,9 +112,9 @@ const SidebarContent = ({ ...props }) => (
             <Image
                 alt="Homepage Image"
                 objectFit="cover"
-                width="60px"
+                width="80px"
                 mt={"40%"}
-                src="https://img.hotstar.com/image/upload/v1656431456/web-images/logo-d-plus.svg"
+                src={Logo}
               />
           </Text>
         </Flex>

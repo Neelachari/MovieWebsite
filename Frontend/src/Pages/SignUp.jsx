@@ -57,6 +57,7 @@ export const SignUp = () => {
       </Box>
     ),
   })
+  setuser(initialState);
  console.log(user)
 }
 
@@ -64,7 +65,7 @@ export const SignUp = () => {
 
 
   return (
-    <Box as="main"  height="auto" w={"100vw"} paddingLeft={"8%"}  bg={"black"} border={"0.1px solid blue"} >
+    <Box as="main"  height="auto" w={"98.5vw"} paddingLeft={"9%"}  bg={"black"} border={"0.1px solid blue"} >
     <Stack minH="70vh"  paddingLeft={"8%"} marginTop={"3%"} direction={{ base: 'column-reverse', md: 'row' }} border={"1px solid blue"} background= 'transparent' color="white" backdropFilter={"blur(1px)"}>
       <Flex flex={1}>
         <Image alt="Cover image" objectFit="cover" src="https://emby.media/community/uploads/inline/1124/57dec9263974d_Produce7.gif" />
