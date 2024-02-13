@@ -48,7 +48,7 @@ export const MovieSinglePage = () => {
              playsInline
              autoPlay
             muted   // Add the muted attribute to enable autoplay on mobile devices
-             poster={data.Poster_Image}
+             poster={"data.Trailer_URL"}
            >
              <source
               src={data.Trailer_URL}

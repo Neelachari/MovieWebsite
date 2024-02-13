@@ -8,12 +8,14 @@ import { Movies } from '../Pages/Movies'
 import { Categories } from '../Pages/Categories'
 import { SignUp } from '../Pages/SignUp'
 import { MovieSinglePage } from '../Pages/MovieSinglePage'
+import { Login } from '../Pages/Login'
 
 export const AllRoutes = () => {
   return (
     <Routes>
         <Route path="/" element={<Home/>} ></Route>
-        <Route path="/Login" element={<MySpace/>} ></Route>
+        <Route path="/Private" element={<MySpace/>} ></Route>
+        <Route path="/Login" element={<Login/>} ></Route>
         <Route path="/SignUp" element={<SignUp/>} ></Route>
         <Route path="/explore" element={<Explore/>} ></Route>
         <Route path="/shows" element={<Shows/>} ></Route>

@@ -17,6 +17,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { postSignup } from '../Redux/Auth/Action';
 import { useToast } from '@chakra-ui/react'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const initialState={
   Name:"",
@@ -37,6 +38,7 @@ export const SignUp = () => {
   const [user,setuser]=React.useState(initialState) 
   const dispatch= useDispatch()
   const toast = useToast()
+  const navigate=useNavigate()
 
 
  const handleChange=(e)=>{
@@ -49,16 +51,51 @@ export const SignUp = () => {
  const handleSubmit=(e)=>{
   e.preventDefault()
   dispatch(postSignup(user))
-  toast({
-    position: 'top',
-    render: () => (
-      <Box color='white' p={3} bg='blue.500'>
-       { user.Name} youe account created successfully! 😊 
-      </Box>
-    ),
-  })
-  setuser(initialState);
- console.log(user)
+  if(user.Name==""&&user.mobile_Number==""&&user.age==""&&user.email==""&&user.password==""){
+    toast.error("Please Enter All Credentials to Sign Up")
+    toast({
+      position:"top",
+      isClosable: true,
+      duration: 2000,
+      status: "warning",
+      render:()=>(
+          <Box color="white" bg="blue.500" p="20px" > Please fill out all required fields</Box>
+      )
+    })
+   
+  }
+  else if(user.password.includes("~!@#$%^&*")){
+    // toast("Password should contain some special characters ~!@#$%^&*")
+    toast({
+      position:"top",
+      isClosable: true,
+      duration: 2000,
+      status: "warning",
+      render:()=>(
+          <Box color="white" bg="blue.500" p="20px" > should contain some special characters ~!@#$%^&*</Box>
+      )
+    })
+   
+  }
+  else{
+    toast({
+      position: 'top',
+      isClosable: true,
+      duration: 2000,
+      status: "success",
+      render: () => (
+        <Box color='white' p={3} bg='blue.500'>
+         { user.Name} your account created successfully! 😊 
+        </Box>
+      ),
+     
+    })
+    // setuser(initialState);
+    // navigate("/Login")
+    // console.log(user)
+   
+  }
+
 }
 
 
@@ -87,11 +124,11 @@ export const SignUp = () => {
             p={{ base: 5, sm: 10 }}
           >
             <VStack spacing={1} w="100%">
-            <FormControl id="email">
+            <FormControl id="Name">
                 <FormLabel>Name</FormLabel>
                 <Input rounded="md" type="text" placeholder='Enter your Name' name='Name' value={user.Name} onChange={(e)=>handleChange(e)} />
               </FormControl>
-              <FormControl id="email">
+              <FormControl id="mobile">
                 <FormLabel>Mobile number</FormLabel>
                 <Input rounded="md" type="number" placeholder='Enter your Number'  name='mobile_Number' value={user.mobile_Number} onChange={(e)=>handleChange(e)} />
               </FormControl>
@@ -99,7 +136,7 @@ export const SignUp = () => {
                 <FormLabel>Email</FormLabel>
                 <Input rounded="md" type="email" placeholder='Enter your email' name='email' value={user.email} onChange={(e)=>handleChange(e)}/>
               </FormControl>
-              <FormControl id="password">
+              <FormControl id="Age">
                 <FormLabel>Age</FormLabel>
                 <Input rounded="md" type="number" placeholder='Enter your Age' name='age' value={user.age} onChange={(e)=>handleChange(e)}/>
               </FormControl>
