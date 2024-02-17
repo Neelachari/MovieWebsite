@@ -9,11 +9,12 @@ import { Categories } from '../Pages/Categories'
 import { SignUp } from '../Pages/SignUp'
 import { MovieSinglePage } from '../Pages/MovieSinglePage'
 import { Login } from '../Pages/Login'
+import { PrivateRoute } from '../Components/PrivateRoute'
 
 export const AllRoutes = () => {
   return (
     <Routes>
-        <Route path="/" element={<Home/>} ></Route>
+        <Route path="/" element={<PrivateRoute> <Home/></PrivateRoute>} ></Route>
         <Route path="/Private" element={<MySpace/>} ></Route>
         <Route path="/Login" element={<Login/>} ></Route>
         <Route path="/SignUp" element={<SignUp/>} ></Route>

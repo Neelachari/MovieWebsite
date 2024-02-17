@@ -5,7 +5,7 @@ import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, POST_SIGN_SUCCESS } from "
 //Login post request 
 export const login=(userData)=>(dispatch)=>{
     dispatch({type:LOGIN_REQUEST})
-     axios.post(`https://movies-data-fdb6.onrender.com/users/login`,userData)
+    return axios.post(`https://movies-data-fdb6.onrender.com/users/login`,userData)
     .then((res)=>{
         dispatch({type:LOGIN_SUCCESS, paylaod: res.data.token})
         //console.log(res.data)

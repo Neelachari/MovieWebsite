@@ -18,10 +18,56 @@ import {
   Image
 } from '@chakra-ui/react';
 import Logo from "../Imges/PLY.png"
+import { login } from '../Redux/Auth/Action';
+import { useToast } from '@chakra-ui/react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  const [email,setemail]=useState("")
+  const [password,setpassword]=useState("")
+  const dispatch=useDispatch()
+  const location=useLocation()
+  const navigate=useNavigate()
+  const toast = useToast()
+  
+  const auth=useSelector((store)=>store.authReducer.isAuth)
+  const err=useSelector((store)=>store.authReducer.isError)
+
+  
+ console.log(auth)
+ const handleLogin=()=>{
+   const userData={
+       email,
+       password
+   }
+   console.log(userData)
+   dispatch(login(userData)).then(()=>{
+    toast({
+      position: 'top',
+      isClosable: true,
+      duration: 2000,
+      status: "success",
+      render: () => (
+        <Box color='white' p={3} bg='blue.500'>
+          Login successfully! 😊 
+        </Box>
+      ),
+     
+    })
+    navigate(location.state)
+      //  navigate("/")
+   })
+
+ }
+
+
+
+
+
+
 
   return (
     <Box as="main" w={"98.5vw"} paddingLeft={"13%"} height={"100Vh"}    bg={useColorModeValue('black', 'gray.800')} >
@@ -47,12 +93,12 @@ export const Login = () => {
             <VStack spacing={4} w="100%">
               <FormControl id="email">
                 <FormLabel>Email</FormLabel>
-                <Input rounded="md" type="email" placeholder={"Enter your email"} />
+                <Input rounded="md" type="email" value={email} onChange={(e)=>setemail(e.target.value)} placeholder={"Enter your email"} />
               </FormControl>
               <FormControl id="password">
                 <FormLabel>Password</FormLabel>
                 <InputGroup size="md" >
-                  <Input rounded="md" type={show ? 'text' : 'password'}  placeholder={"Enter your password"} />
+                  <Input rounded="md" type={show ? 'text' : 'password'} value={password} onChange={(e)=>setpassword(e.target.value)}  placeholder={"Enter your password"} />
                   <InputRightElement width="4.5rem">
                     <Button
                       h="1.75rem"
@@ -85,6 +131,7 @@ export const Login = () => {
                 }}
                 rounded="md"
                 w="100%"
+                onClick={handleLogin}
               >
                 Login
               </Button>

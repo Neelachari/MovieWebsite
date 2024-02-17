@@ -52,7 +52,7 @@ export const SignUp = () => {
   e.preventDefault()
   dispatch(postSignup(user))
   if(user.Name==""&&user.mobile_Number==""&&user.age==""&&user.email==""&&user.password==""){
-    toast.error("Please Enter All Credentials to Sign Up")
+    // toast.error("Please Enter All Credentials to Sign Up")
     toast({
       position:"top",
       isClosable: true,
@@ -90,9 +90,9 @@ export const SignUp = () => {
       ),
      
     })
-    // setuser(initialState);
-    // navigate("/Login")
-    // console.log(user)
+    setuser(initialState);
+    navigate("/Login")
+    console.log(user)
    
   }
 
