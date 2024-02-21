@@ -36,25 +36,16 @@ export const MovieSinglePage = () => {
             
           }
 
+          const handleMySpace=()=>{
+
+          }
+
   return (
-    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')} color={"white"}>
+    <Box as="main"  height="auto" w={"98.5vw"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')} color={"white"}>
       <div id="container">
         <div id="img">
-        <h1>{_id}</h1>
-          {/* <img width={"20%"} src={data.Poster_Image} alt={data.title} /> */}
-          <video
-            style={{ width: "100%"}}
-             loop
-             playsInline
-             autoPlay
-            muted   // Add the muted attribute to enable autoplay on mobile devices
-             poster={"data.Trailer_URL"}
-           >
-             <source
-              src={data.Trailer_URL}
-               type="video/mp4"
-             />
-          </video> 
+          <iframe width="100%" height="600" src={data.Trailer_URL} autoplay frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
         </div>
         <div id="details">
           <h4>{data.Title}</h4>
@@ -62,8 +53,11 @@ export const MovieSinglePage = () => {
           <h5><span>Release Date:</span> {data.Release_Date}</h5>
           <h5><span>Director:</span> {data.director}</h5>
           <p><span>Description:</span> {data.Description}</p>
-          <button id="button" onClick={handleWatchNow}>
+          {/* <button id="button" onClick={handleWatchNow}>
             WATCH NOW
+          </button> */}
+          <button id="button" onClick={handleMySpace}>
+            ADD FEV
           </button>
         </div>
       </div>
@@ -84,7 +78,7 @@ export const MovieSinglePage = () => {
 
         <h1>Watch Trailer:</h1>
         <p>
-          <a href={data.Trailer_URL} target="_blank" rel="noopener noreferrer">
+          <a href={data.Trailer_URL} rel="noopener noreferrer">
             {data.Title} Trailer
           </a>
         </p>

@@ -11,10 +11,16 @@ export const MoviesCard = ({_id,Average_Rating,Description,Poster_Image,Release_
           <h4 >{Title}</h4>
           <p >RunTime{Runtime}</p>
           <p >{Description}</p>
+          <div id='moviebtn'>
           <Link to={`/movie/${_id}`}>
-           <Button colorScheme='blue' variant='outline'  >
+           <Button  colorScheme='gray'   >
     Watch Now
   </Button></Link>
+  <Button colorScheme='black' >
+   +
+  </Button>
+          </div>
+         
       </Box>
     </Box>
   )

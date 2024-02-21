@@ -201,8 +201,8 @@ const NavItem = (props) => {
       transition=".15s ease"
       color={useColorModeValue('inherit', 'gray.400')}
       _hover={{
-        bg: useColorModeValue('gray.100', 'gray.900'),
-        color: useColorModeValue('black', 'white.200')
+        bg: useColorModeValue('black', 'gray.900'),
+        color: useColorModeValue('white', 'white.200')
       }}
     >
       {icon && (

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
 import { MoviesCard } from '../Components/MoviesCard'
+import plyvideo from "../Imges/Home.mp4"
 import "./Navbar.css"
 
 export const Home = () => {
@@ -28,7 +29,7 @@ console.log(videoId)
     <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}   bg={useColorModeValue('black', 'gray.800')} >
        <Box   >
 
-            <video
+            {/* <video
           style={{ width: "100%"}}
            loop
            playsInline
@@ -40,7 +41,21 @@ console.log(videoId)
             src="https://cdn-images.cure.fit/www-curefit-com/video/upload/c_fill,w_1400,ar_1.77,q_auto:eco,dpr_1,vc_auto,f_auto/video/test/we-are-cult-web.mp4"
              type="video/mp4"
            />
+        </video>  */}
+        <video
+          style={{ width: "100%"}}
+           loop
+           playsInline
+           autoPlay
+          muted   // Add the muted attribute to enable autoplay on mobile devices
+           poster="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_1400,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/we-are-cult-logo/promo-video-poster.jpg"
+         >
+           <source
+            src={plyvideo}
+             type="video/mp4"
+           />
         </video> 
+        
        
       
     
