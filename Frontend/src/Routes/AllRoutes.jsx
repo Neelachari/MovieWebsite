@@ -21,7 +21,7 @@ export const AllRoutes = () => {
         <Route path="/explore" element={<Explore/>} ></Route>
         <Route path="/shows" element={<Shows/>} ></Route>
         <Route path="/movies" element={<Movies/>} ></Route>
-        <Route path="/movie/:_id" element={<MovieSinglePage/>} ></Route>
+        <Route path="/movie/:_id" element={<PrivateRoute><MovieSinglePage/></PrivateRoute>} ></Route>
         <Route path="/categories" element={<Categories/>} ></Route>
     </Routes>
   )
