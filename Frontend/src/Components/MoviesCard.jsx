@@ -9,16 +9,16 @@ export const MoviesCard = ({_id,Average_Rating,Description,Poster_Image,Release_
         <img width={"100%"} height={"100px"}  className="zoom-image" src={Poster_Image} alt="" />
       <Box className='details'>
           <h4 >{Title}</h4>
-          <p >RunTime{Runtime}</p>
+          <p >RunTime:{Runtime}</p>
           <p >{Description}</p>
           <div id='moviebtn'>
           <Link to={`/movie/${_id}`}>
            <Button  colorScheme='gray'   >
     Watch Now
   </Button></Link>
-  <Button colorScheme='black' >
+  {/* <Button colorScheme='black' >
    +
-  </Button>
+  </Button> */}
           </div>
          
       </Box>

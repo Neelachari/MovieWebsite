@@ -41,15 +41,15 @@ import Logo from "../Imges/PLY.png"
 
 
 export default function Navbar() {
-  const auth=useSelector((store)=>store.authReducer.isAuth)
+ 
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [data,setData]=useState([])
   const dispatch=useDispatch()
   const Movies=useSelector((store)=> store.productReducer.movies)
-  
+  const auth  = useSelector((store) => store.authReducer.isAuth)
   const videoId = new URL("https://www.youtube.com/embed/tABlzTH8G9o?si=frgn1yoLc3W6RwJS").searchParams.get("v");
 
-console.log(videoId)
+console.log(auth)
 
 
   useEffect(()=>{
@@ -60,7 +60,7 @@ console.log(videoId)
 
   return (
     <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100%"} >
-      <SidebarContent display={{ base: 'none', md: 'unset' }}  />
+      <SidebarContent display={{ base: 'none', md: 'unset' }}   />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
         <DrawerContent>
@@ -84,6 +84,8 @@ console.log(videoId)
 }
 
 const SidebarContent = ({ ...props }) => (
+   
+
 
   <Box
     as="nav"
@@ -111,6 +113,7 @@ const SidebarContent = ({ ...props }) => (
             color={useColorModeValue('brand.500', 'black')}
             fontWeight="semibold"
           >
+          <Link to="/">
             <Image
                 alt="Homepage Image"
                 objectFit="cover"
@@ -118,6 +121,7 @@ const SidebarContent = ({ ...props }) => (
                 mt={"40%"}
                 src={Logo}
               />
+          </Link>
           </Text>
         </Flex>
         <Flex
@@ -173,7 +177,7 @@ const SidebarContent = ({ ...props }) => (
             />
           </MenuButton>
           <MenuList fontSize={15} zIndex={5555} background= 'transparent'>
-            <MenuItem as={Link} to="/Login"   background= 'transparent' color="white" >
+            <MenuItem as={Link} to="/Login"   background= 'transparent' color="white"   >
               Login
             </MenuItem>
              

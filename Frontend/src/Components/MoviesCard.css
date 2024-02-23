@@ -96,5 +96,38 @@
   }
   
 
+  @media only screen and (max-width: 768px) {
+    .details p {
+      font-size: x-small;
+      margin: 0; /* Remove default margin */
+      margin-left: 3%;
+    }
+    .details h4{
+      margin-left: 3%;
+      color: rgb(196, 219, 85);
+      font-size: small;
+      font-weight: bolder;
+      font-family: Courier, monospace;
+      font-weight:bold;
+      margin-bottom: 10px;
+    }
+    .details p{
+      color: rgb(238, 232, 232);
+      font-size: x-small;
+      margin-bottom: 15px;
+    }
+    .details button{
+      font-size: x-small;
+      width: 70%;
+      margin-left: 20px;
+  
+    }
+    
+  }
+  
+  @media only screen and (max-width: 480px) {
+  
+  }
+
 
  

@@ -57,7 +57,7 @@ export const MovieSinglePage = () => {
   </Badge> </h5>
           <p><span>Description:</span> {data.Description}</p>
           <button id="button" onClick={handleMySpace}>
-            ADD FEV
+            Add to My Space
           </button>
         </div>
       </div>

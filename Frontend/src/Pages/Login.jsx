@@ -26,8 +26,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
-  const [email,setemail]=useState("")
-  const [password,setpassword]=useState("")
+  const [email,setemail]=useState("User@123")
+  const [password,setpassword]=useState("User@123")
   const dispatch=useDispatch()
   const location=useLocation()
   const navigate=useNavigate()
