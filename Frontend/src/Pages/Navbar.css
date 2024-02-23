@@ -52,6 +52,40 @@ margin-top: 30px;
 
 }
  
+#Heading{
+  margin-left: 2%;
+  margin-top: 5%;
+  z-index: 5;
+  position: absolute;
+  /* font-size: 18px; */
+
+}
+#Heading h1{
+  color: #106ef1;
+  font-size: 50px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+  padding: 10px;
+  font-family: Courier, monospace;
+}
+
+#Heading p{
+  color: #f2422b;
+  font-size: 18px;
+  font-weight: bolder;
+  padding: 10px;
+  font-family: Courier, monospace;
+}
+#Heading img{
+  visibility:50%;
+}
+#Heading h6{
+  font-size: 18px;
+  color: white;
+  font-weight: bolder;
+}
+
+
 
   /* .details{
     visibility: hidden; 

@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
 import { MoviesCard } from '../Components/MoviesCard'
 import plyvideo from "../Imges/Home.mp4"
+import Postermovie from "../Imges/MoviePosterscreen.png"
 import "./Navbar.css"
+import Logo from "../Imges/PLY.png"
 
 export const Home = () => {
   const [data,setData]=useState([])
@@ -42,13 +44,20 @@ console.log(videoId)
              type="video/mp4"
            />
         </video>  */}
+        <div id='Heading'>
+        <h1 >Welocome !</h1>
+        <img  src={Logo} alt="" />
+        <p>We're thrilled to have you as our guest. Explore the exciting world of entertainment, discover new stories, and immerse yourself in a captivating experience. Whether you're a movie enthusiast, a gaming aficionado, or just looking for a place to unwind, we've got something special for everyone. Enjoy your stay!</p>
+        <h6>Action | Fantasy | Period | Revenge</h6>
+        </div>
+       
         <video
           style={{ width: "100%"}}
            loop
            playsInline
            autoPlay
           muted   // Add the muted attribute to enable autoplay on mobile devices
-           poster="https://cdn-images.cure.fit/www-curefit-com/image/upload/c_fill,w_1400,q_auto:eco,dpr_1,f_auto,fl_progressive/image/test/we-are-cult-logo/promo-video-poster.jpg"
+           poster={Postermovie}
          >
            <source
             src={plyvideo}

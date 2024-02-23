@@ -81,7 +81,7 @@ export const Login = () => {
             as="form"
             boxSize={{ base: 'xs', sm: 'sm', md: 'md' }}
             h="max-content !important"
-            bg={useColorModeValue('blur', 'gray.700')}
+            bg={useColorModeValue('balck.800', 'gray.700')}
             rounded="lg"
             border={"1px solid blue"}
             boxShadow="lg"

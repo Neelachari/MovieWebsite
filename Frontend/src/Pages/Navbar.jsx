@@ -41,6 +41,7 @@ import Logo from "../Imges/PLY.png"
 
 
 export default function Navbar() {
+  const auth=useSelector((store)=>store.authReducer.isAuth)
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [data,setData]=useState([])
   const dispatch=useDispatch()
@@ -83,6 +84,7 @@ console.log(videoId)
 }
 
 const SidebarContent = ({ ...props }) => (
+
   <Box
     as="nav"
     pos="fixed"
@@ -175,7 +177,7 @@ const SidebarContent = ({ ...props }) => (
               Login
             </MenuItem>
              
-            <MenuItem as={Link} to="/SignUp"  background= 'transparent' color="white" >
+            <MenuItem as={Link} to="/SignUp"  background= 'transparent' color="white"  >
               SignUp
             </MenuItem>
             <MenuItem  background= 'transparent' color="white">Logout</MenuItem>
