@@ -38,25 +38,26 @@ import { getMovies } from '../Redux/MovieReducer/Action'
 import { MoviesCard } from '../Components/MoviesCard'
 import "./Navbar.css"
 import Logo from "../Imges/PLY.png"
+import { FaUserCircle } from "react-icons/fa";
 
 
 export default function Navbar() {
- 
+  const auth  = useSelector((store) => store.authReducer.isAuth)
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [data,setData]=useState([])
   const dispatch=useDispatch()
   const Movies=useSelector((store)=> store.productReducer.movies)
-  const auth  = useSelector((store) => store.authReducer.isAuth)
+ 
   const videoId = new URL("https://www.youtube.com/embed/tABlzTH8G9o?si=frgn1yoLc3W6RwJS").searchParams.get("v");
 
-console.log(auth)
+console.log(auth, "I AM AUTH")
 
 
   useEffect(()=>{
     dispatch(getMovies())
   },[])
 
-  console.log(Movies)
+  // console.log(Movies)
 
   return (
     <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100%"} >
@@ -64,7 +65,7 @@ console.log(auth)
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
         <DrawerContent>
-          <SidebarContent w="full" borderRight="none" />
+          <SidebarContent w="full" borderRight="none"   />
         </DrawerContent>
       </Drawer>
       <Box ml={{ base: 0, md: 'auto' }} transition=".3s ease" background={"black"}  >
@@ -83,114 +84,117 @@ console.log(auth)
   );
 }
 
-const SidebarContent = ({ ...props }) => (
-   
 
+const SidebarContent = ({ ...props }) => {
+  const auth = useSelector((store) => store.authReducer.isAuth);
+  const User = useSelector((store) => store.authReducer.users);
 
-  <Box
-    as="nav"
-    pos="fixed"
-    top="0"
-    left="0"
-    zIndex="sticky"
-    h="full"
-    // pb="10"
-    overflowX="hidden"
-    overflowY="auto"
-    bg={useColorModeValue('black', 'gray.800')}
-    borderColor={useColorModeValue('inherit', 'gray.700')}
-    borderRightWidth="1px solid gray"
-    w="13%"
-    {...props}
-  >
-    <VStack h="full"  alignItems="flex-start" justifyContent="space-between"  >
-      <Box w="full" id='navbox'>
-        <Flex px="4" py="5" align="center">
-          {/* <Icon as={RiFlashlightFill} h={8} w={8} /> */}
-          <Text
-            fontSize="2xl"
-            ml="2"
-            color={useColorModeValue('brand.500', 'black')}
-            fontWeight="semibold"
+  return (
+    <Box
+      as="nav"
+      pos="fixed"
+      top="0"
+      left="0"
+      zIndex="sticky"
+      h="full"
+      overflowX="hidden"
+      overflowY="auto"
+      bg={useColorModeValue('black', 'gray.800')}
+      borderColor={useColorModeValue('inherit', 'gray.700')}
+      borderRightWidth="1px solid gray"
+      w="13%"
+      {...props}
+    >
+      <VStack h="full" alignItems="flex-start" justifyContent="space-between">
+        <Box w="full" id='navbox'>
+          <Flex px="4" py="5" align="center">
+            <Text
+              fontSize="2xl"
+              ml="2"
+              color={useColorModeValue('brand.500', 'black')}
+              fontWeight="semibold"
+            >
+              <Link to="/">
+                <Image
+                  alt="Homepage Image"
+                  objectFit="cover"
+                  width="80px"
+                  mt={"40%"}
+                  src={Logo}
+                />
+              </Link>
+            </Text>
+          </Flex>
+          <Flex
+            direction="column"
+            as="nav"
+            mt={"20px"}
+            fontSize="md"
+            color="gray.600"
+            aria-label="Main Navigation"
+            box-shadow='rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;'
           >
-          <Link to="/">
-            <Image
-                alt="Homepage Image"
-                objectFit="cover"
-                width="80px"
-                mt={"40%"}
-                src={Logo}
-              />
-          </Link>
-          </Text>
-        </Flex>
-        <Flex
-          direction="column"
-          as="nav"
-          mt={"20px"}
-          fontSize="md"
-          color="gray.600"
-          aria-label="Main Navigation"
-          box-shadow ='rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;'
-        >
-          <Link to="/Private">
-        <NavItem  icon={FaRegCircleUser}>My Space</NavItem>
-        </Link>
-        <Link to="/explore">
-        <NavItem  icon={CiSearch}>Search</NavItem>
-        </Link>
-        <Link to="/">
-        <NavItem  icon={GoHomeFill}>Home</NavItem>
-        </Link>
-        <Link to="/shows">
-        <NavItem  icon={LiaTvSolid}>TV</NavItem>
-        </Link>
-        <Link to="/movies">
-        <NavItem  icon={PiFilmSlateFill}>Movies</NavItem>
-        </Link>
-        <Link to="/">
-        <NavItem  icon={MdSportsVolleyball}>Sports</NavItem>
-        </Link>
-        <Link to="/categories">
-        <NavItem  icon={BiSolidCategory}>Categories</NavItem>
-        </Link>
-        </Flex>
-      </Box>
+            <Link to="/Private">
+              <NavItem icon={FaRegCircleUser}>My Space</NavItem>
+            </Link>
+            <Link to="/explore">
+              <NavItem icon={CiSearch}>Search</NavItem>
+            </Link>
+            <Link to="/">
+              <NavItem icon={GoHomeFill}>Home</NavItem>
+            </Link>
+            <Link to="/shows">
+              <NavItem icon={LiaTvSolid}>TV</NavItem>
+            </Link>
+            <Link to="/movies">
+              <NavItem icon={PiFilmSlateFill}>Movies</NavItem>
+            </Link>
+            <Link to="/">
+              <NavItem icon={MdSportsVolleyball}>Sports</NavItem>
+            </Link>
+            <Link to="/categories">
+              <NavItem icon={BiSolidCategory}>Categories</NavItem>
+            </Link>
+          </Flex>
+        </Box>
 
-      <Flex px="4" py="5" mt={10} justifyContent="center" alignItems="center" >
-        <Menu  >
-          <MenuButton
-            as={Button}
-            size={'sm'}
-            
-            border={"2px solid blue"}
-            rounded={'full'}
-            variant={'link'}
-            cursor={'pointer'}
-            _hover={{ bg: useColorModeValue('gray.100', 'gray.900'), color: useColorModeValue('black', 'white.200'),textDecoration: 'none' }}
-            
-          >
-            <Avatar
+        <Flex px="4" py="5" mt={10} justifyContent="center" alignItems="center">
+          <Menu>
+            <MenuButton
+              as={Button}
               size={'sm'}
-              name="User"
-              src="https://avatars2.githubusercontent.com/u/37842853?v=4"
-            />
-          </MenuButton>
-          <MenuList fontSize={15} zIndex={5555} background= 'transparent'>
-            <MenuItem as={Link} to="/Login"   background= 'transparent' color="white"   >
-              Login
-            </MenuItem>
-             
-            <MenuItem as={Link} to="/SignUp"  background= 'transparent' color="white"  >
-              SignUp
-            </MenuItem>
-            <MenuItem  background= 'transparent' color="white">Logout</MenuItem>
-          </MenuList>
-        </Menu>
-      </Flex>
-    </VStack>
-  </Box>
-);
+              border={"2px solid blue"}
+              rounded={'full'}
+              variant={'link'}
+              cursor={'pointer'}
+              _hover={{ bg: useColorModeValue('gray.100', 'gray.900'), color: useColorModeValue('black', 'white.200'), textDecoration: 'none' }}
+            >
+             {auth ? <Avatar
+                size={'sm'}
+                name="User"
+                src="https://avatars2.githubusercontent.com/u/37842853?v=4"
+              /> : <FaUserCircle  size={'30px'} />  
+             }
+            </MenuButton>
+            <MenuList fontSize={15} zIndex={5555} background='transparent'>
+              
+              {auth  ? <MenuItem background='transparent' color="white" >Logout</MenuItem>  :
+                <Box>
+                  <MenuItem as={Link} to="/Login" background='transparent' color="white" >
+                    Login
+                  </MenuItem>
+                  <MenuItem as={Link} to="/SignUp" background='transparent' color="white" >
+                    SignUp
+                  </MenuItem>
+                </Box>
+              }
+            </MenuList>
+          </Menu>
+        </Flex>
+      </VStack>
+    </Box>
+  );
+};
 
 const NavItem = (props) => {
   const color = useColorModeValue('gray.600', 'gray.300');
