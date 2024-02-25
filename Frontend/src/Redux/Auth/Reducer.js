@@ -13,11 +13,14 @@ export const Reducer =(state=initialState,{type,payload})=>{
         case LOGIN_REQUEST:{
             return {...state, isLoading:true}
         }
+
         case LOGIN_SUCCESS:{
-            return {...state, isLoading:false, isAuth:true, token :payload , isError:false}
+           
+            return {...state, isLoading:false, isAuth:true, token :payload, isError:false}
+            
         }
         case LOGOUT_SUCCESS:{
-            return {...state, isLoading:false, isAuth:false, token :null , isError:false}
+            return {...state, isLoading:false, isAuth:false, token :"" , isError:false}
         }
         case POST_SIGN_SUCCESS:{
             return {...state, isError:false, isLoading:false,  users:[...state.users, payload]}
@@ -28,3 +31,4 @@ export const Reducer =(state=initialState,{type,payload})=>{
         default : return state
     }
 }
+

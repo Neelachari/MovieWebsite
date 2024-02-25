@@ -41,6 +41,7 @@ import Logo from "../Imges/PLY.png"
 import { FaUserCircle } from "react-icons/fa";
 import { logout } from '../Redux/Auth/Action';
 import { useToast } from '@chakra-ui/react'
+import { LOGOUT_SUCCESS } from '../Redux/Auth/ActionTypes';
 
 export default function Navbar() {
   const auth  = useSelector((store) => store.authReducer.isAuth)
@@ -61,7 +62,7 @@ console.log(auth, "I AM AUTH")
   // console.log(Movies)
 
   return (
-    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100%"} >
+    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100%"}   >
       <SidebarContent display={{ base: 'none', md: 'unset' }}   />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
@@ -70,16 +71,21 @@ console.log(auth, "I AM AUTH")
         </DrawerContent>
       </Drawer>
       <Box ml={{ base: 0, md: 'auto' }} transition=".3s ease" background={"black"}  >
-          <IconButton
+         {/* <Flex> */}
+         <IconButton
             aria-label="Menu"
             display={{ base: 'inline-flex', md: 'none' }}
             onClick={onOpen}
+            
             icon={<FiMenu />}
             color={"white"}
             size="md"
+            mr={"20px"}
             bg={"black"}
             
           />
+          {/* <img  width="10%" src={Logo} alt="" /> */}
+         {/* </Flex> */}
       </Box>
     </Box>
   );
@@ -88,14 +94,16 @@ console.log(auth, "I AM AUTH")
 
 const SidebarContent = ({ ...props }) => {
   const auth = useSelector((store) => store.authReducer.isAuth);
+  const token = useSelector((store) => store.authReducer.token);
   const User = useSelector((store) => store.authReducer.users);
   const toast = useToast()
   const dispatch=useDispatch()
   const navigate=useNavigate()
 
  const handleLogout = () => {
-    dispatch(logout())
-        // .then(() => {
+  
+    dispatch(logout(token))
+        .then(() => {
             toast({
                 position: 'top',
                 isClosable: true,
@@ -108,11 +116,8 @@ const SidebarContent = ({ ...props }) => {
                 ),
             });
             navigate("/");
-        // })
-        // .catch((error) => {
-        //     // Handle logout failure, show an error message if needed
-        //     console.error("Logout error:", error);
-        // });
+        })
+       
 };
 
 
@@ -131,9 +136,11 @@ const SidebarContent = ({ ...props }) => {
       borderColor={useColorModeValue('inherit', 'gray.700')}
       borderRightWidth="1px solid gray"
       w="13%"
+      
+      
       {...props}
     >
-      <VStack h="full" alignItems="flex-start" justifyContent="space-between">
+      <VStack h="full" alignItems="flex-start" justifyContent="space-between"  >
         <Box w="full" id='navbox'>
           <Flex px="4" py="5" align="center">
             <Text
@@ -235,6 +242,7 @@ const NavItem = (props) => {
       py="3"
       cursor="pointer"
       role="group"
+     
       fontWeight="semibold"
       transition=".15s ease"
       color={useColorModeValue('inherit', 'gray.400')}

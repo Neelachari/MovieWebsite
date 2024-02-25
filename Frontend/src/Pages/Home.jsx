@@ -28,7 +28,7 @@ console.log(videoId)
 
 
   return (
-    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}   bg={useColorModeValue('black', 'gray.800')} >
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"} id='mainDiv'     bg={useColorModeValue('black', 'gray.800')} >
        <Box >
         <div id='Heading'>
         <h1 >Welocome !</h1>

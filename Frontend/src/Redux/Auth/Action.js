@@ -8,7 +8,8 @@ export const login=(userData)=>(dispatch)=>{
     return axios.post(`https://movies-data-fdb6.onrender.com/users/login`,userData)
     .then((res)=>{
         dispatch({type:LOGIN_SUCCESS, paylaod: res.data.token})
-        //console.log(res.data)
+        
+        console.log(res.data.token)
     })
     .catch((err)=>{
         dispatch({type:LOGIN_FAILURE, paylaod: err.message})
@@ -17,6 +18,8 @@ export const login=(userData)=>(dispatch)=>{
     
 
 }
+
+
 
 //Logout request
 // export const logout=()=>(dispatch)=>{
@@ -27,20 +30,43 @@ export const login=(userData)=>(dispatch)=>{
 //     })
 // }
 
+
 // Logout request
 // action.js
-export const logout = ()=>  (dispatch) => {
-    // dispatch({ type: LOGIN_REQUEST });
-     axios.post(`https://movies-data-fdb6.onrender.com/users/logout`)
-        .then((res) => {
-            dispatch({ type: LOGOUT_SUCCESS });
-        })
-        .catch((error) => {
-            console.error("Logout error:", error);
-            // Handle error, dispatch an error action if needed
-        });
-};
-
+// export const logout = (token)=>  (dispatch) => {
+//     // dispatch({ type: LOGIN_REQUEST });
+//       return axios.post(`https://movies-data-fdb6.onrender.com/users/logout`,{
+//         headers: {
+//           Authorization: token,
+//         },)
+//         .then((res) => {
+//             dispatch({ type: LOGOUT_SUCCESS  });
+//         })
+//         .catch((error) => {
+//             console.error("Logout error:", error);
+//             // Handle error, dispatch an error action if needed
+//         });
+// };
+export const logout = (token) => (dispatch) => {
+    return axios
+      .post(
+        "https://movies-data-fdb6.onrender.com/users/logout",
+        {},
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .then((res) => {
+        dispatch({ type: LOGOUT_SUCCESS });
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+        // Handle error, dispatch an error action if needed
+      });
+  };
+  
 
 
 
