@@ -31,7 +31,7 @@ import { FaRegCircleUser } from "react-icons/fa6"
   import { PiFilmSlateFill } from "react-icons/pi"
   import { MdSportsVolleyball } from "react-icons/md"
   import { BiSolidCategory } from "react-icons/bi"
-  import {Link} from "react-router-dom"
+  import {Link, useNavigate} from "react-router-dom"
   import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
@@ -39,7 +39,8 @@ import { MoviesCard } from '../Components/MoviesCard'
 import "./Navbar.css"
 import Logo from "../Imges/PLY.png"
 import { FaUserCircle } from "react-icons/fa";
-
+import { logout } from '../Redux/Auth/Action';
+import { useToast } from '@chakra-ui/react'
 
 export default function Navbar() {
   const auth  = useSelector((store) => store.authReducer.isAuth)
@@ -88,6 +89,33 @@ console.log(auth, "I AM AUTH")
 const SidebarContent = ({ ...props }) => {
   const auth = useSelector((store) => store.authReducer.isAuth);
   const User = useSelector((store) => store.authReducer.users);
+  const toast = useToast()
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+
+ const handleLogout = () => {
+    dispatch(logout())
+        // .then(() => {
+            toast({
+                position: 'top',
+                isClosable: true,
+                duration: 2000,
+                status: "success",
+                render: () => (
+                    <Box color='white' p={3} bg='blue.500'>
+                        Logout successfully! 😊 
+                    </Box>
+                ),
+            });
+            navigate("/");
+        // })
+        // .catch((error) => {
+        //     // Handle logout failure, show an error message if needed
+        //     console.error("Logout error:", error);
+        // });
+};
+
+
 
   return (
     <Box
@@ -178,7 +206,7 @@ const SidebarContent = ({ ...props }) => {
             </MenuButton>
             <MenuList fontSize={15} zIndex={5555} background='transparent'>
               
-              {auth  ? <MenuItem background='transparent' color="white" >Logout</MenuItem>  :
+              {auth  ? <MenuItem background='transparent' color="white" onClick={handleLogout} >Logout</MenuItem>  :
                 <Box>
                   <MenuItem as={Link} to="/Login" background='transparent' color="white" >
                     Login

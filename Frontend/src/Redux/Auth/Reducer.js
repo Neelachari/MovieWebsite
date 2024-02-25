@@ -1,4 +1,4 @@
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, POST_SIGN_SUCCESS } from "./ActionTypes"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS } from "./ActionTypes"
 
 const initialState={
     users:[],
@@ -15,6 +15,9 @@ export const Reducer =(state=initialState,{type,payload})=>{
         }
         case LOGIN_SUCCESS:{
             return {...state, isLoading:false, isAuth:true, token :payload , isError:false}
+        }
+        case LOGOUT_SUCCESS:{
+            return {...state, isLoading:false, isAuth:false, token :null , isError:false}
         }
         case POST_SIGN_SUCCESS:{
             return {...state, isError:false, isLoading:false,  users:[...state.users, payload]}

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, POST_SIGN_SUCCESS } from "./ActionTypes"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS } from "./ActionTypes"
 
 
 //Login post request 
@@ -17,6 +17,33 @@ export const login=(userData)=>(dispatch)=>{
     
 
 }
+
+//Logout request
+// export const logout=()=>(dispatch)=>{
+//     dispatch({type:LOGIN_REQUEST})
+//     return axios.post(`https://movies-data-fdb6.onrender.com/users/logout`)
+//     .then((res)=>{
+//         dispatch({type:LOGOUT_SUCCESS})
+//     })
+// }
+
+// Logout request
+// action.js
+export const logout = ()=>  (dispatch) => {
+    // dispatch({ type: LOGIN_REQUEST });
+     axios.post(`https://movies-data-fdb6.onrender.com/users/logout`)
+        .then((res) => {
+            dispatch({ type: LOGOUT_SUCCESS });
+        })
+        .catch((error) => {
+            console.error("Logout error:", error);
+            // Handle error, dispatch an error action if needed
+        });
+};
+
+
+
+
 
 export const postSignup=(user)=>(dispatch)=>{
     console.log(user)
