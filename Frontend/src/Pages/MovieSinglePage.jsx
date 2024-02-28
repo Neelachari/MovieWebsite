@@ -42,7 +42,7 @@ export const MovieSinglePage = () => {
           }
 
   return (
-    <Box as="main"  height="auto" w={"98.5vw"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')} color={"white"}>
+    <Box as="main"  height="auto" w={"98.5vw"} paddingLeft={"13%"} id='Maincontainer'  bg={useColorModeValue('#000014', 'gray.800')} color={"white"}>
       <div id="container">
         <div id="img">
           <iframe width="100%" height="600" src={data.Trailer_URL} autoplay frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

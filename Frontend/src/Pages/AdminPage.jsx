@@ -13,13 +13,11 @@ import {
 
 import React from 'react'
 
-export const MySpace = () => {
-   
-
-  return (
-    <Box as="main" w={"98.5vw"} paddingLeft={"13%"} height={"100vh"}    bg={useColorModeValue('#000014', 'gray.800')}  >
-      <Text fontSize={"xxx-large"} color={"gray"} paddingLeft={"30%"} >Welcome User !</Text>
-   
-    </Box>
-  )
+export const AdminPage = () => {
+    return (
+        <Box as="main" w={"98.5vw"} paddingLeft={"13%"} height={"100vh"}    bg={useColorModeValue('#000014', 'gray.800')}  >
+          <Text fontSize={"xxx-large"} color={"gray"} paddingLeft={"30%"} >Welcome Admin</Text>
+       
+        </Box>
+      )
 }

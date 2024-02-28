@@ -62,21 +62,21 @@ console.log(auth, "I AM AUTH")
   // console.log(Movies)
 
   return (
-    <Box as="section" bg={useColorModeValue('gray.50', 'gray.700')}  w={"100%"}   >
-      <SidebarContent display={{ base: 'none', md: 'unset' }}   />
+    <Box as="section" bg={useColorModeValue('#000014', 'gray.700')}  w={"100%"}   >
+      <SidebarContent display={{ base: 'none', md: 'unset' }}    />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
         <DrawerContent>
-          <SidebarContent w="full" borderRight="none"   />
+          <SidebarContent w="full" borderRight="none"    />
         </DrawerContent>
       </Drawer>
-      <Box ml={{ base: 0, md: 'auto' }} transition=".3s ease" background={"black"}  >
+      <Box ml={{ base: 0, md: 'auto' }} transition=".3s ease" background={"black"}   >
          {/* <Flex> */}
          <IconButton
             aria-label="Menu"
             display={{ base: 'inline-flex', md: 'none' }}
             onClick={onOpen}
-            
+           
             icon={<FiMenu />}
             color={"white"}
             size="md"
@@ -94,7 +94,7 @@ console.log(auth, "I AM AUTH")
 
 const SidebarContent = ({ ...props }) => {
   const auth = useSelector((store) => store.authReducer.isAuth);
-  const token = useSelector((store) => store.authReducer.token);
+  // const token = useSelector((store) => store.authReducer.token);
   const User = useSelector((store) => store.authReducer.users);
   const toast = useToast()
   const dispatch=useDispatch()
@@ -102,7 +102,7 @@ const SidebarContent = ({ ...props }) => {
 
  const handleLogout = () => {
   
-    dispatch(logout(token))
+    dispatch(logout())
         .then(() => {
             toast({
                 position: 'top',
@@ -132,16 +132,15 @@ const SidebarContent = ({ ...props }) => {
       h="full"
       overflowX="hidden"
       overflowY="auto"
-      bg={useColorModeValue('black', 'gray.800')}
+      bg={useColorModeValue('#000014', 'gray.800')}
       borderColor={useColorModeValue('inherit', 'gray.700')}
       borderRightWidth="1px solid gray"
       w="13%"
       
-      
       {...props}
     >
-      <VStack h="full" alignItems="flex-start" justifyContent="space-between"  >
-        <Box w="full" id='navbox'>
+      <VStack  h="full" alignItems="flex-start" justifyContent="space-between"    >
+        <Box w="full" id='navbox' >
           <Flex px="4" py="5" align="center">
             <Text
               fontSize="2xl"
@@ -163,6 +162,7 @@ const SidebarContent = ({ ...props }) => {
           <Flex
             direction="column"
             as="nav"
+           
             mt={"20px"}
             fontSize="md"
             color="gray.600"
@@ -175,8 +175,8 @@ const SidebarContent = ({ ...props }) => {
             <Link to="/explore">
               <NavItem icon={CiSearch}>Search</NavItem>
             </Link>
-            <Link to="/">
-              <NavItem icon={GoHomeFill}>Home</NavItem>
+            <Link to="/"  >
+              <NavItem  icon={GoHomeFill}>Home</NavItem>
             </Link>
             <Link to="/shows">
               <NavItem icon={LiaTvSolid}>TV</NavItem>
@@ -193,7 +193,7 @@ const SidebarContent = ({ ...props }) => {
           </Flex>
         </Box>
 
-        <Flex px="4" py="5" mt={10} justifyContent="center" alignItems="center">
+        <Flex px="4" py="5" mt={10} justifyContent="center" alignItems="center"   >
           <Menu>
             <MenuButton
               as={Button}
@@ -202,7 +202,8 @@ const SidebarContent = ({ ...props }) => {
               rounded={'full'}
               variant={'link'}
               cursor={'pointer'}
-              _hover={{ bg: useColorModeValue('gray.100', 'gray.900'), color: useColorModeValue('black', 'white.200'), textDecoration: 'none' }}
+             
+              _hover={{ bg: useColorModeValue('#000018', 'gray.900'), color: useColorModeValue('#000014', 'white.200'), textDecoration: 'none' }}
             >
              {auth ? <Avatar
                 size={'sm'}
@@ -232,7 +233,7 @@ const SidebarContent = ({ ...props }) => {
 };
 
 const NavItem = (props) => {
-  const color = useColorModeValue('gray.600', 'gray.300');
+  const color = useColorModeValue('#000014', 'gray.300');
 
   const { icon, children } = props;
   return (
@@ -242,12 +243,12 @@ const NavItem = (props) => {
       py="3"
       cursor="pointer"
       role="group"
-     
+      // border="1px solid pink"
       fontWeight="semibold"
       transition=".15s ease"
       color={useColorModeValue('inherit', 'gray.400')}
       _hover={{
-        bg: useColorModeValue('black', 'gray.900'),
+        bg: useColorModeValue('#11112b', 'gray.900'),
         color: useColorModeValue('white', 'white.200')
       }}
     >

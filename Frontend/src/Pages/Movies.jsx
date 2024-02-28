@@ -18,7 +18,7 @@ export const Movies = () => {
 
 
   return (
-    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')}>
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('#000014', 'gray.800')}>
        <Box className='Movies'>
       {
         isLoading ? <Box as="main"  height="700px" w={"100%"} paddingLeft={"500px"} mt={"200px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /></Box> :Movies.length>0 && Movies?.map((e)=>{

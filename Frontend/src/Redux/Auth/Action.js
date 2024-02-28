@@ -33,39 +33,36 @@ export const login=(userData)=>(dispatch)=>{
 
 // Logout request
 // action.js
-// export const logout = (token)=>  (dispatch) => {
-//     // dispatch({ type: LOGIN_REQUEST });
-//       return axios.post(`https://movies-data-fdb6.onrender.com/users/logout`,{
-//         headers: {
-//           Authorization: token,
-//         },)
-//         .then((res) => {
-//             dispatch({ type: LOGOUT_SUCCESS  });
-//         })
-//         .catch((error) => {
-//             console.error("Logout error:", error);
-//             // Handle error, dispatch an error action if needed
-//         });
-// };
-export const logout = (token) => (dispatch) => {
-    return axios
-      .post(
-        "https://movies-data-fdb6.onrender.com/users/logout",
-        {},
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      )
-      .then((res) => {
-        dispatch({ type: LOGOUT_SUCCESS });
-      })
-      .catch((error) => {
-        console.error("Logout error:", error);
-        // Handle error, dispatch an error action if needed
-      });
-  };
+export const logout = ()=>  (dispatch) => {
+    dispatch({ type: LOGIN_REQUEST });
+      return axios.post(`https://movies-data-fdb6.onrender.com/users/logout`)
+        .then((res) => {
+            dispatch({ type: LOGOUT_SUCCESS  });
+        })
+        .catch((error) => {
+            console.error("Logout error:", error);
+            // Handle error, dispatch an error action if needed
+        });
+};
+// export const logout = (token) => (dispatch) => {
+//     return axios
+//       .post(
+//         "https://movies-data-fdb6.onrender.com/users/logout",
+//         {},
+//         {
+//           headers: {
+//             Authorization: token,
+//           },
+//         }
+//       )
+//       .then((res) => {
+//         dispatch({ type: LOGOUT_SUCCESS });
+//       })
+//       .catch((error) => {
+//         console.error("Logout error:", error);
+//         // Handle error, dispatch an error action if needed
+//       });
+//   };
   
 
 

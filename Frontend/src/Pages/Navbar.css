@@ -43,6 +43,7 @@ margin-top: 30px;
 #navbox NavItem{
   @media (max-width: 768px) {
   font-size: x-small;
+  
   #mainDiv{
     padding-left: 0%;
   }
@@ -97,6 +98,12 @@ margin-top: 30px;
 /* Media queries for responsive design */
 
 @media only screen and (max-width: 768px) {
+  #mainDiv{
+    /* border: 1px solid red; */
+    padding-left: 0px;
+  }
+
+
   #Heading h1 {
     font-size: 40px; /* Adjust font size for smaller screens */
   }

@@ -47,7 +47,7 @@ export const Explore = () => {
 
 
   return (
-    <Box as="main"  minH="1000px" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')}  >
+    <Box as="main"  minH="1000px" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('#000014', 'gray.800')}  >
       <Box >
          <InputGroup>
     <InputLeftElement pointerEvents='none'  mt="25px" >

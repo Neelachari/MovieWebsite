@@ -27,13 +27,6 @@ const initialState={
   password:"",
 }
 
-// UserID:{type:Number,required:true},
-// Name:{type:String,required:true},
-// email:{type:String,required:true},
-// mobile_Number:{type:Number,required:true},
-// age:{type:Number,required:true},
-// password:{type:String,required:true},
-
 export const SignUp = () => {
   const [user,setuser]=React.useState(initialState) 
   const dispatch= useDispatch()
@@ -102,23 +95,23 @@ export const SignUp = () => {
 
 
   return (
-    <Box as="main"  height="auto" w={"98.5vw"} paddingLeft={"9%"}  bg={"black"} border={"0.1px solid blue"} >
-    <Stack minH="70vh"  paddingLeft={"8%"} marginTop={"3%"} direction={{ base: 'column-reverse', md: 'row' }} border={"1px solid blue"} background= 'transparent' color="white" backdropFilter={"blur(1px)"}>
+    <Box as="main"  height="auto" w={"98.5vw"} paddingLeft={"9%"}  bg={"#000014"} border={"0.1px solid gray"} >
+    <Stack minH="70vh"  paddingLeft={"8%"} marginTop={"3%"} direction={{ base: 'column-reverse', md: 'row' }} border={"1px solid gray"} background= 'transparent' color="white" backdropFilter={"blur(1px)"}>
       <Flex flex={1}>
         <Image alt="Cover image" objectFit="cover" src="https://emby.media/community/uploads/inline/1124/57dec9263974d_Produce7.gif" />
       </Flex>
       <Flex p={6} flex={1} align="center" justifyContent="center">
         <Stack spacing={2}>
           <Stack align="center">
-            <Heading fontSize="2xl" color={"blue"}>Sign in to your account</Heading>
+            <Heading fontSize="2xl" color={"gray"}>Sign in to your account</Heading>
           </Stack>
           <VStack
             as="form"
             spacing={6}
             boxSize={{ base: 'xs', sm: 'sm', md: 'md' }}
             h="max-content !important"
-            bg={useColorModeValue('black', 'gray.700')}
-            color={"blue"}
+            bg={useColorModeValue('#000014', 'gray.700')}
+            color={"gray"}
             rounded="lg"
             boxShadow="lg"
             p={{ base: 5, sm: 10 }}
@@ -172,12 +165,3 @@ export const SignUp = () => {
     </Box>
   );
 };
-
-;
-
-// UserID:{type:Number,required:true},
-//     Name:{type:String,required:true},
-//     email:{type:String,required:true},
-//     mobile_Number:{type:Number,required:true},
-//     age:{type:Number,required:true},
-//     password:{type:String,required:true},

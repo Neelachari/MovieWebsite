@@ -64,28 +64,35 @@
 }
 
 
-@media only screen and (min-width: 768px) {
-    #container {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  
-    #img {
-      width: 60%;
-    }
-  
-    #details {
-      width: 35%;
-      text-align: left;
-    }
+@media only screen and (max-width: 768px) {
+  #Maincontainer{
+    padding-left: 0px;
   }
-  
-  @media only screen and (min-width: 1024px) {
-    #img {
-      width: 100%;
-    }
-  
-    #details {
-      width: 95%;
-    }
+  #img iframe{
+    height: auto;
   }
+  #button {
+    background-color: rgb(61, 61, 220);
+    width: "200px";
+    padding: 10px;
+    font-size: "8px";
+}
+ 
+}
+
+@media only screen and (max-width: 480px) {
+  #Maincontainer{
+    padding-left: 0px;
+  }
+  #img iframe{
+    height: auto;
+  }
+  #button {
+    background-color: rgb(61, 61, 220);
+    width: "200px";
+    padding: 10px;
+    font-size: "8px";
+}
+ 
+
+}

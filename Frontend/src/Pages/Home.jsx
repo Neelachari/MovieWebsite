@@ -28,7 +28,7 @@ console.log(videoId)
 
 
   return (
-    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"} id='mainDiv'     bg={useColorModeValue('black', 'gray.800')} >
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"} id='mainDiv'     bg={useColorModeValue('#000014', 'gray.800')} >
        <Box >
         <div id='Heading'>
         <h1 >Welocome !</h1>
@@ -54,7 +54,7 @@ console.log(videoId)
          <Box   className='Movies'> 
          {
 
-           isLoading ?  <Box  as="main"  minHeight="500px" w={"100%"} paddingLeft={"500px"} mt={"80px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /></Box> : Movies.length>0 && Movies?.map((e)=>{
+           isLoading ?  <Box  as="main"  minHeight="500px" w={"100%"} paddingLeft={"500px"} mt={"80px"} bg={useColorModeValue('#000014', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /></Box> : Movies.length>0 && Movies?.map((e)=>{
             return <MoviesCard  key={e.id} {...e}/>
           }  ) 
 

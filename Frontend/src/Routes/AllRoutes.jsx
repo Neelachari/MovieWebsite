@@ -10,6 +10,8 @@ import { SignUp } from '../Pages/SignUp'
 import { MovieSinglePage } from '../Pages/MovieSinglePage'
 import { Login } from '../Pages/Login'
 import { PrivateRoute } from '../Components/PrivateRoute'
+import { Admin } from '../Pages/Admin'
+import { AdminPage } from '../Pages/AdminPage'
 
 export const AllRoutes = () => {
   return (
@@ -18,7 +20,9 @@ export const AllRoutes = () => {
         <Route path="/Private" element={<MySpace/>} ></Route>
         <Route path="/Login" element={<Login/>} ></Route>
         <Route path="/SignUp" element={<SignUp/>} ></Route>
+        <Route path="/Admin" element={<Admin/>} ></Route>
         <Route path="/explore" element={<Explore/>} ></Route>
+        <Route path="/AdminPage" element={<AdminPage/>} ></Route>
         <Route path="/shows" element={<Shows/>} ></Route>
         <Route path="/movies" element={<Movies/>} ></Route>
         <Route path="/movie/:_id" element={<PrivateRoute><MovieSinglePage/></PrivateRoute>} ></Route>

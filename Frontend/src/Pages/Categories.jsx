@@ -14,7 +14,7 @@ export const Categories = () => {
 
 
   return (
-    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('black', 'gray.800')}>
+    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"}  bg={useColorModeValue('#000014', 'gray.800')}>
     <Box className='Movies'>
    {
      Movies.length>0 && Movies.map((e)=>{

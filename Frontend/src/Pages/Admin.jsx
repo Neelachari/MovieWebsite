@@ -15,8 +15,7 @@ import {
   Checkbox,
   Link,
   Box,
-  Image,
-  Text
+  Image
 } from '@chakra-ui/react';
 import Logo from "../Imges/PLY.png"
 import { login } from '../Redux/Auth/Action';
@@ -24,56 +23,58 @@ import { useToast } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-export const Login = () => {
-  const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show);
-  const [email,setemail]=useState("User@123")
-  const [password,setpassword]=useState("User@123")
-  const dispatch=useDispatch()
-  const location=useLocation()
-  const navigate=useNavigate()
-  const toast = useToast()
-  
-  const auth=useSelector((store)=>store.authReducer.isAuth)
-  const err=useSelector((store)=>store.authReducer.isError)
+export const Admin = () => {
+    const [show, setShow] = useState(false);
+    const handleClick = () => setShow(!show);
+    const [email,setemail]=useState("admin@321")
+    const [password,setpassword]=useState("admin@123")
+    const toast = useToast()
+    const navigate=useNavigate()
 
-  
- console.log(auth)
- const handleLogin=()=>{
-   const userData={
-       email,
-       password
+   const handleLogin=()=>{
+    const userData={
+        email,
+        password
+    }
+    console.log(userData)
+    if(email=="admin@321"&&password=="admin@123"){
+        toast({
+            position: 'top',
+            isClosable: true,
+            duration: 2000,
+            status: "success",
+            render: () => (
+              <Box color='white' p={3} bg='blue.500'>
+                Admin Login successfully! 😊 
+              </Box>
+            ),
+           
+          })
+          navigate("/AdminPage")
+
+    }
+    else{
+        toast({
+            position: 'top',
+            isClosable: true,
+            duration: 2000,
+            status: "warning",
+            render: () => (
+              <Box color='white' p={3} bg='blue.500'>
+                Please Check your Email or Password
+              </Box>
+            ),
+           
+          })
+    }
+       //  navigate("/")
    }
-   console.log(userData)
-   dispatch(login(userData)).then(()=>{
-    
-    toast({
-      position: 'top',
-      isClosable: true,
-      duration: 2000,
-      status: "success",
-      render: () => (
-        <Box color='white' p={3} bg='blue.500'>
-          Login successfully! 😊 
-        </Box>
-      ),
-     
-    })
-    navigate(location.state)
-      //  navigate("/")
-   })
-
- }
-
-
-
-
 
 
 
   return (
-    <Box as="main" w={"98.5vw"} paddingLeft={"13%"} height={"100Vh"}     bg={useColorModeValue('#000014', 'gray.800')} >
-    <Container maxW="6xl" p={{ base: 5, md: 10 }}>
+    <Box as="main" w={"98.5vw"} paddingLeft={"13%"} height={"100Vh"}    bg={useColorModeValue('#000014', 'gray.800')} >
+    <Container maxW="7xl" p={{ base: 5, md: 10 }}>
       <Center>
         <Stack spacing={4}>
           <Stack align="center">
@@ -89,9 +90,9 @@ export const Login = () => {
             boxShadow="lg"
             color={"gray"}
             p={{ base: 5, sm: 10 }}
-            spacing={6}
+            spacing={8}
           >
-            <Heading fontSize="2xl" color={"gray"} >Login in to your account</Heading>
+            <Heading fontSize="2xl" color={"gray"} >Login in to Admin account</Heading>
              <Image w={"30%"} src={Logo} alt={"logo"} />
             <VStack spacing={4} w="100%">
             
@@ -139,13 +140,11 @@ export const Login = () => {
               >
                 Login
               </Button>
-              <Text >Are you Admin <a href='/Admin' style={{color:"blue"}}>Clickhere</a> </Text>
             </VStack>
           </VStack>
         </Stack>
       </Center>
     </Container>
     </Box>
-  );
-};
-
+  )
+}
