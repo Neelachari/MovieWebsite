@@ -71,11 +71,14 @@
   #img iframe{
     height: auto;
   }
-  #button {
+  #details button{
     background-color: rgb(61, 61, 220);
-    width: "200px";
-    padding: 10px;
-    font-size: "8px";
+ 
+    width: "600px";
+    height: "20px";
+    padding: 40px;
+    font-size: "4px";
+    /* border: 2px solid red; */
 }
  
 }
@@ -87,11 +90,11 @@
   #img iframe{
     height: auto;
   }
-  #button {
+  #details button{
     background-color: rgb(61, 61, 220);
-    width: "200px";
+    width: "600px";
     padding: 10px;
-    font-size: "8px";
+    font-size: "4px";
 }
  
 

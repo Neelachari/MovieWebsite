@@ -115,7 +115,7 @@ const SidebarContent = ({ ...props }) => {
                     </Box>
                 ),
             });
-            navigate("/");
+            navigate(window.location.reload());
         })
        
 };
