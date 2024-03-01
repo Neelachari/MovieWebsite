@@ -23,6 +23,7 @@ import { login } from '../Redux/Auth/Action';
 import { useToast } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
+import "./Navbar.css"
 
 export const Login = () => {
   const [show, setShow] = useState(false);
@@ -72,7 +73,7 @@ export const Login = () => {
 
 
   return (
-    <Box as="main" w={"98.5vw"} paddingLeft={"13%"} height={"100Vh"}     bg={useColorModeValue('#000014', 'gray.800')} >
+    <Box as="main" w={"98.5vw"} paddingLeft={"13%"} height={"100Vh"} id='mainDiv'    bg={useColorModeValue('#000014', 'gray.800')} >
     <Container maxW="6xl" p={{ base: 5, md: 10 }}>
       <Center>
         <Stack spacing={4}>

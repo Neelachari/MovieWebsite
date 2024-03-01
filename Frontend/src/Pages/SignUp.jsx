@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux';
 import { postSignup } from '../Redux/Auth/Action';
 import { useToast } from '@chakra-ui/react'
 import { Navigate, useNavigate } from 'react-router-dom';
+import "./Navbar.css"
 
 const initialState={
   Name:"",
@@ -95,7 +96,7 @@ export const SignUp = () => {
 
 
   return (
-    <Box as="main"  height="auto" w={"98.5vw"} paddingLeft={"9%"}  bg={"#000014"} border={"0.1px solid gray"} >
+    <Box as="main"  height="auto" w={"98.5vw"} paddingLeft={"9%"} id='mainDiv'  bg={"#000014"} border={"0.1px solid gray"} >
     <Stack minH="70vh"  paddingLeft={"8%"} marginTop={"3%"} direction={{ base: 'column-reverse', md: 'row' }} border={"1px solid gray"} background= 'transparent' color="white" backdropFilter={"blur(1px)"}>
       <Flex flex={1}>
         <Image alt="Cover image" objectFit="cover" src="https://emby.media/community/uploads/inline/1124/57dec9263974d_Produce7.gif" />

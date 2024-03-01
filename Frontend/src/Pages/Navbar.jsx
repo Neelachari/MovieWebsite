@@ -62,7 +62,7 @@ console.log(auth, "I AM AUTH")
   // console.log(Movies)
 
   return (
-    <Box as="section" bg={useColorModeValue('#000014', 'gray.700')}  w={"100%"}   >
+    <Box as="section" bg={useColorModeValue('#000014', 'gray.700')}  w={"100%"}    >
       <SidebarContent display={{ base: 'none', md: 'unset' }}    />
       <Drawer isOpen={isOpen} onClose={onClose} placement="left">
         <DrawerOverlay />
@@ -70,13 +70,12 @@ console.log(auth, "I AM AUTH")
           <SidebarContent w="full" borderRight="none"    />
         </DrawerContent>
       </Drawer>
-      <Box ml={{ base: 0, md: 'auto' }} transition=".3s ease" background={"black"}   >
+      <Box ml={{ base: 0, md: 'auto' }} transition=".3s ease" background={"#000014"}   >
          {/* <Flex> */}
          <IconButton
             aria-label="Menu"
             display={{ base: 'inline-flex', md: 'none' }}
             onClick={onOpen}
-           
             icon={<FiMenu />}
             color={"white"}
             size="md"
@@ -107,7 +106,7 @@ const SidebarContent = ({ ...props }) => {
             toast({
                 position: 'top',
                 isClosable: true,
-                duration: 2000,
+                duration: 500,
                 status: "success",
                 render: () => (
                     <Box color='white' p={3} bg='blue.500'>
@@ -115,8 +114,11 @@ const SidebarContent = ({ ...props }) => {
                     </Box>
                 ),
             });
-            navigate(window.location.reload());
+            
         })
+        setTimeout(()=>{
+          navigate(window.location.reload());
+        },1000)
        
 };
 
@@ -132,19 +134,22 @@ const SidebarContent = ({ ...props }) => {
       h="full"
       overflowX="hidden"
       overflowY="auto"
+      
       bg={useColorModeValue('#000014', 'gray.800')}
       borderColor={useColorModeValue('inherit', 'gray.700')}
       borderRightWidth="1px solid gray"
       w="13%"
+      // border={"2px solid red"}
       
       {...props}
     >
-      <VStack  h="full" alignItems="flex-start" justifyContent="space-between"    >
+      <VStack  h="full"  alignItems="flex-start" justifyContent="space-between"      >
         <Box w="full" id='navbox' >
           <Flex px="4" py="5" align="center">
             <Text
               fontSize="2xl"
               ml="2"
+             
               color={useColorModeValue('brand.500', 'black')}
               fontWeight="semibold"
             >
