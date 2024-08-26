@@ -2,13 +2,15 @@ import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_
 
 const initialState={
     users:[],
+    Account_info:[],
+    UserId:"",
     isAuth:false,
     token:"",
     isLoading:false,
     isError:false
 }
 
-export const Reducer =(state=initialState,{type,payload})=>{
+export const Reducer =(state=initialState,{type,payload,UserId,Account_info})=>{
     switch(type){
         case LOGIN_REQUEST:{
             return {...state, isLoading:true}
@@ -16,11 +18,11 @@ export const Reducer =(state=initialState,{type,payload})=>{
 
         case LOGIN_SUCCESS:{
            
-            return {...state, isLoading:false, isAuth:true, token :payload, isError:false}
+            return {...state, isLoading:false, isAuth:true, token :payload, isError:false, UserId:UserId, Account_info:Account_info}
             
         }
         case LOGOUT_SUCCESS:{
-            return {...state, isLoading:false, isAuth:false, token :"" , isError:false}
+            return {...state, isLoading:false, isAuth:false, token :localStorage.removeItem('accessToken'), isError:false}
         }
         case POST_SIGN_SUCCESS:{
             return {...state, isError:false, isLoading:false,  users:[...state.users, payload]}

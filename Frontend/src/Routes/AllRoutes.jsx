@@ -12,6 +12,7 @@ import { Login } from '../Pages/Login'
 import { PrivateRoute } from '../Components/PrivateRoute'
 import { Admin } from '../Pages/Admin'
 import { AdminPage } from '../Pages/AdminPage'
+import { EditMovie } from '../Pages/EditMovie'
 
 export const AllRoutes = () => {
   return (
@@ -26,6 +27,7 @@ export const AllRoutes = () => {
         <Route path="/shows" element={<Shows/>} ></Route>
         <Route path="/movies" element={<Movies/>} ></Route>
         <Route path="/movie/:_id" element={<PrivateRoute><MovieSinglePage/></PrivateRoute>} ></Route>
+        <Route path="/editmovie/:_id" element={<EditMovie/>} ></Route>
         <Route path="/categories" element={<Categories/>} ></Route>
     </Routes>
   )

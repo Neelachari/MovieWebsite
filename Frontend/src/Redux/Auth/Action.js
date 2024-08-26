@@ -5,11 +5,11 @@ import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_
 //Login post request 
 export const login=(userData)=>(dispatch)=>{
     dispatch({type:LOGIN_REQUEST})
-    return axios.post(`https://movies-data-fdb6.onrender.com/users/login`,userData)
+    return axios.post(`http://localhost:8888/users/login`,userData)
     .then((res)=>{
-        dispatch({type:LOGIN_SUCCESS, paylaod: res.data.token})
+        dispatch({type:LOGIN_SUCCESS, paylaod: res.data.token, UserId:res.data.UserId, Account_info:res.data.Account_info})
         
-        console.log(res.data.token)
+        console.log(res.data)
     })
     .catch((err)=>{
         dispatch({type:LOGIN_FAILURE, paylaod: err.message})

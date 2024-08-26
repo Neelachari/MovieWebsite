@@ -38,7 +38,9 @@ console.log(videoId)
         </div>
        
         <video
-          style={{ width: "100%"}}
+    style={{ width: "100%", maskImage: "linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))" }}
+
+
            loop
            playsInline
            autoPlay

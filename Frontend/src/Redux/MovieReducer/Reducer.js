@@ -1,4 +1,4 @@
-import { GET_PRODUCT_SUCCESS, POST_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./ActionTypes"
+import { GET_PRODUCT_SUCCESS, PATCH_PRODUCT_SUCCESS, POST_PRODUCT_SUCCESS, PRODUCT_FAILURE, PRODUCT_REQUEST } from "./ActionTypes"
 
 const initialState={
     movies:[],
@@ -21,6 +21,8 @@ export const Reducer = (state = initialState,{type,payload}) => {
     case GET_PRODUCT_SUCCESS:{
       return {...state, isError:false, isLoading:false, movies:payload}
     }
+    case PATCH_PRODUCT_SUCCESS:
+      return {...state, isLoading:false, }
     default : return state
 
   }

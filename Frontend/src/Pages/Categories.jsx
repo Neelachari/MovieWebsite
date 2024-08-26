@@ -1,64 +1,53 @@
-import { Box, Center, Heading, Text, useColorModeValue } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import "./Navbar.css"
-import { useDispatch, useSelector } from 'react-redux'
-import { getMovies } from '../Redux/MovieReducer/Action'
-import { MoviesCard } from '../Components/MoviesCard'
-import { Select } from '@chakra-ui/react'
+import { Box, useColorModeValue, Select } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMovies } from '../Redux/MovieReducer/Action';
+import { MoviesCard } from '../Components/MoviesCard';
+import "./Navbar.css";
 
 export const Categories = () => {
-  const dispatch=useDispatch()
-  const Movies=useSelector((store)=> store.productReducer.movies)
-  const [Data,setData]=useState([])
+  const dispatch = useDispatch();
+  const Movies = useSelector((store) => store.productReducer.movies);
+  const [filteredData, setFilteredData] = useState([]);
 
+  useEffect(() => {
+    dispatch(getMovies());
+  }, [dispatch]);
 
+  useEffect(() => {
+    setFilteredData(Movies);
+  }, [Movies]);
 
-  useEffect(()=>{
-    dispatch(getMovies())
-  },[])
-
-  const handleChnge=(value)=>{
-    // console.log(value)
-    if(value=="Run_Time"){
-      const sortData=[...Movies]
-      sortData.sort((a,b)=> a.Runtime-b.Runtime)
-      setData(sortData)
-
+  const handleChange = (value) => {
+    if (value === '') {
+      setFilteredData(Movies);
+    } else {
+      let sortData = [...Movies];
+      if (value === 'Run_Time') {
+        sortData.sort((a, b) => a.Runtime - b.Runtime);
+      } else if (value === 'Rating') {
+        sortData.sort((a, b) => a.Average_Rating - b.Average_Rating);
+      } else if (value === 'Release_Date') {
+        sortData.sort((a, b) => new Date(a.Release_Date) - new Date(b.Release_Date));
+      }
+      setFilteredData(sortData);
     }
-    else if(value=="Rating"){
-      const sortData=[...Movies]
-      sortData.sort((a,b)=> a.Average_Rating-b.Average_Rating)
-      setData(sortData)
-    }
-    else if(value=="Release_Date"){
-      const sortData=[...Movies]
-      sortData.sort((a,b)=> a.Release_Date.Date()-b.Release_Date.Date())
-      setData(sortData)
-    }
-    else if(value==''){
-        getMovies()
-    }
-
-  }
-
+  };
 
   return (
-    <Box as="main"  height="auto" w={"100%"} paddingLeft={"13%"} id='mainDiv'  bg={useColorModeValue('#000014', 'gray.800')}>
-      <Box w={"25%"} color={"gray"} pt={"20px"} display={"flex"} >
-     <Select onChange={(e)=>handleChnge(e.target.value)}>
-        <option value=''>Select</option>
-        <option value='Run_Time'>Run Time</option>
-        <option value='Rating'>Rating</option>
-        <option value='Release_Date'>Release Date</option>
-      </Select>
-     </Box>
-    <Box className='Movies'>
-   {
-     Movies.length>0 && Movies.map((e)=>{
-       return <MoviesCard  key={e.id} {...e}/>
-     }  )
-   }
-   </Box>
- </Box>
-  )
-}
+    <Box as="main" height="auto" w="100%" paddingLeft="13%" bg={useColorModeValue('#000014', 'gray.800')}>
+      <Box w="25%" color="gray" pt="20px" display="flex">
+        <Select placeholder="Select" onChange={(e) => handleChange(e.target.value)}>
+          <option value="Run_Time">Run Time</option>
+          <option value="Rating">Rating</option>
+          <option value="Release_Date">Release Date</option>
+        </Select>
+      </Box>
+      <Box className="Movies">
+        {filteredData.length > 0 && filteredData.map((e) => (
+          <MoviesCard key={e.id} {...e} />
+        ))}
+      </Box>
+    </Box>
+  );
+};
