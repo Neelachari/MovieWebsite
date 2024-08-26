@@ -1,4 +1,4 @@
-import { Box, InputGroup, InputLeftElement, Input, useColorModeValue, CircularProgress } from '@chakra-ui/react'
+import { Box, InputGroup, InputLeftElement, Input, useColorModeValue, CircularProgress, Text } from '@chakra-ui/react'
 import React, { useEffect, useRef, useState } from 'react'
 import { CiAirportSign1, CiSearch } from "react-icons/ci"
 import { useDispatch, useSelector } from 'react-redux'
@@ -58,7 +58,7 @@ export const Explore = () => {
     </Box>
     <Box className='Movies'> 
          {
-          isLoading ? <Box  as="main"  minHeight="500px" w={"100%"} paddingLeft={"500px"} mt={"80px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /></Box> :
+          isLoading ? <Box  as="main"  minHeight="500px" w={"100%"} paddingLeft={"500px"} mt={"80px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /><Text fontSize={"xx-large"} color={"gray"} ml={"-20px"}>Loading...</Text></Box> :
         filtredData.length>0 && filtredData.map((e)=>{
           return <MoviesCard  key={e.id} {...e}/>
         }  )

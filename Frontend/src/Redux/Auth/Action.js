@@ -1,5 +1,6 @@
 import axios from "axios"
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS } from "./ActionTypes"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS, } from "./ActionTypes"
+import { DELETE_PRODUCT_SUCCESS } from "../MovieReducer/ActionTypes"
 
 
 //Login post request 
@@ -7,7 +8,7 @@ export const login=(userData)=>(dispatch)=>{
     dispatch({type:LOGIN_REQUEST})
     return axios.post(`http://localhost:8888/users/login`,userData)
     .then((res)=>{
-        dispatch({type:LOGIN_SUCCESS, paylaod: res.data.token, UserId:res.data.UserId, Account_info:res.data.Account_info})
+        dispatch({type:LOGIN_SUCCESS, Name:res.data.Name, paylaod: res.data.token, UserId:res.data.UserId, Account_info:res.data.Account_info})
         
         console.log(res.data)
     })
@@ -82,4 +83,17 @@ export const postSignup=(user)=>(dispatch)=>{
     
 
 
+}
+
+export const deleteMovieCard = (_id) =>(dispatch)=>{
+    dispatch({type:LOGIN_REQUEST})
+    axios.delete(`http://localhost:8888/users/movie/${_id}/add-to-my-space`)
+    .then((res)=>{
+        console.log(res)
+       dispatch({type:DELETE_PRODUCT_SUCCESS})
+
+    })
+    .catch((err)=>{
+        dispatch({type:LOGIN_FAILURE})
+    })
 }

@@ -69,4 +69,10 @@ signupRouter.post('/movie/:id/add-to-my-space', async (req, res) => {
     }
 });
 
+signupRouter.delete('/movie/:id/add-to-my-space',async (req, res) => {
+    let deleteId = await RegisterModel.deleteOne({id: req.params.id })
+   
+   res.send({ message: "The Post has been deleted Successfully", deleteId })
+})
+
 module.exports = signupRouter;

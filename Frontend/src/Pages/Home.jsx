@@ -1,5 +1,5 @@
 
-import { Box, Center, CircularProgress, Flex, Heading, useColorModeValue } from '@chakra-ui/react'
+import { Box, Center, CircularProgress, Flex, Heading, Text, useColorModeValue } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
@@ -56,7 +56,7 @@ console.log(videoId)
          <Box   className='Movies'> 
          {
 
-           isLoading ?  <Box  as="main"  minHeight="500px" w={"100%"} paddingLeft={"500px"} mt={"80px"} bg={useColorModeValue('#000014', '#000014')} ><CircularProgress isIndeterminate color='blue.300' /></Box> : Movies.length>0 && Movies?.map((e)=>{
+           isLoading ?  <Box  as="main"  minHeight="500px" w={"100%"} paddingLeft={"500px"} mt={"80px"} bg={useColorModeValue('#000014', '#000014')} ><CircularProgress isIndeterminate color='blue.300' /><Text fontSize={"xx-large"} color={"gray"} ml={"-20px"}>Loading...</Text></Box> : Movies.length>0 && Movies?.map((e)=>{
             return <MoviesCard  key={e.id} {...e}/>
           }  ) 
 

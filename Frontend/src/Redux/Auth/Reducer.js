@@ -1,16 +1,17 @@
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS } from "./ActionTypes"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS, } from "./ActionTypes"
 
 const initialState={
     users:[],
     Account_info:[],
     UserId:"",
+    Name:"",
     isAuth:false,
     token:"",
     isLoading:false,
     isError:false
 }
 
-export const Reducer =(state=initialState,{type,payload,UserId,Account_info})=>{
+export const Reducer =(state=initialState,{type,payload,UserId,Account_info,Name})=>{
     switch(type){
         case LOGIN_REQUEST:{
             return {...state, isLoading:true}
@@ -18,7 +19,7 @@ export const Reducer =(state=initialState,{type,payload,UserId,Account_info})=>{
 
         case LOGIN_SUCCESS:{
            
-            return {...state, isLoading:false, isAuth:true, token :payload, isError:false, UserId:UserId, Account_info:Account_info}
+            return {...state, isLoading:false, isAuth:true, token :payload, Name:Name, isError:false, UserId:UserId, Account_info:Account_info}
             
         }
         case LOGOUT_SUCCESS:{

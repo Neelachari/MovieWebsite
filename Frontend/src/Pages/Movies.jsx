@@ -1,4 +1,4 @@
-import { Box, Center, CircularProgress, Heading, SkeletonCircle, useColorModeValue } from '@chakra-ui/react'
+import { Box, Center, CircularProgress, Heading, SkeletonCircle, Text, useColorModeValue } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMovies } from '../Redux/MovieReducer/Action'
@@ -47,7 +47,7 @@ export const Movies = () => {
       </Box>
        <Box className='Movies'>
       {
-        isLoading ? <Box as="main"  height="700px" w={"100%"} paddingLeft={"500px"} mt={"200px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /></Box> :Movies.length>0 && Movies?.map((e)=>{
+        isLoading ? <Box as="main"  height="700px" w={"100%"} paddingLeft={"500px"} mt={"200px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /><Text fontSize={"xx-large"} color={"gray"} ml={"-20px"}>Loading...</Text></Box> :Movies.length>0 && Movies?.map((e)=>{
           return <MoviesCard  key={e.id} {...e}/>
         }  )  
 
