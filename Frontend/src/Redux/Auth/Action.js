@@ -6,7 +6,7 @@ import { DELETE_PRODUCT_SUCCESS } from "../MovieReducer/ActionTypes"
 //Login post request 
 export const login=(userData)=>(dispatch)=>{
     dispatch({type:LOGIN_REQUEST})
-    return axios.post(`http://localhost:8888/users/login`,userData)
+    return axios.post(`https://movies-data-fdb6.onrender.com/users/login`,userData)
     .then((res)=>{
         dispatch({type:LOGIN_SUCCESS, Name:res.data.Name, paylaod: res.data.token, UserId:res.data.UserId, Account_info:res.data.Account_info})
         
@@ -85,15 +85,17 @@ export const postSignup=(user)=>(dispatch)=>{
 
 }
 
-export const deleteMovieCard = (_id) =>(dispatch)=>{
-    dispatch({type:LOGIN_REQUEST})
-    axios.delete(`http://localhost:8888/users/movie/${_id}/add-to-my-space`)
-    .then((res)=>{
-        console.log(res)
-       dispatch({type:DELETE_PRODUCT_SUCCESS})
+export const deleteMovieCard = (_id) => (dispatch) => {
+    dispatch({ type: LOGIN_REQUEST });
 
-    })
-    .catch((err)=>{
-        dispatch({type:LOGIN_FAILURE})
-    })
-}
+    axios
+        .delete(`https://movies-data-fdb6.onrender.com/users/movie/${_id}/remove-from-my-space`)
+        .then((res) => {
+            console.log(res);
+            dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: _id });
+        })
+        .catch((err) => {
+            console.error(err);
+            dispatch({ type: LOGIN_FAILURE, payload: err.message });
+        });
+};

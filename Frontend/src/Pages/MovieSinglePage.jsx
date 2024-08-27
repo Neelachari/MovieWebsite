@@ -1,14 +1,18 @@
-import { Badge, Box, useColorModeValue } from '@chakra-ui/react';
+import { Badge, Box, useColorModeValue, useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import "./MovieSinglePage.css";
+import { MYSPACE_UPDATE } from '../Redux/Auth/ActionTypes';
 
 export const MovieSinglePage = () => {
     const { _id } = useParams();
+    const Account_info = useSelector((store) => store.authReducer.Account_info)
     const movies = useSelector((store) => store.productReducer.movies);
     const UserId = useSelector((store) => store.authReducer.UserId);
     console.log("userId", UserId)
+    const dispatch = useDispatch();
+    const toast = useToast()
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -22,7 +26,7 @@ export const MovieSinglePage = () => {
         console.log("Movie ID:", data._id);
 
         try {
-            const response = await fetch(`http://localhost:8888/users/movie/${data._id}/add-to-my-space`, {
+            const response = await fetch(`https://movies-data-fdb6.onrender.com/users/movie/${data._id}/add-to-my-space`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -33,6 +37,7 @@ export const MovieSinglePage = () => {
 
             if (response.ok) {
                 const result = await response.json();
+                dispatch({type:MYSPACE_UPDATE, payload:[...Account_info,_id]})
                 console.log('Successfully added to My Space:', result);
             } else {
                 console.error('Failed to add to My Space');
@@ -40,6 +45,11 @@ export const MovieSinglePage = () => {
         } catch (error) {
             console.error('Error:', error);
         }
+        toast({
+            title: `Movie Added to My space Successfully`,
+            position: "top",
+            isClosable: true,
+          })
     };
 
     if (!data) return <p>Loading...</p>; // Handle the loading state or data not found

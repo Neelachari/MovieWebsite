@@ -1,4 +1,4 @@
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS, } from "./ActionTypes"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, MYSPACE_UPDATE, POST_SIGN_SUCCESS, } from "./ActionTypes"
 
 const initialState={
     users:[],
@@ -21,6 +21,9 @@ export const Reducer =(state=initialState,{type,payload,UserId,Account_info,Name
            
             return {...state, isLoading:false, isAuth:true, token :payload, Name:Name, isError:false, UserId:UserId, Account_info:Account_info}
             
+        }
+        case MYSPACE_UPDATE:{
+            return {...state,Account_info:payload}
         }
         case LOGOUT_SUCCESS:{
             return {...state, isLoading:false, isAuth:false, token :localStorage.removeItem('accessToken'), isError:false}

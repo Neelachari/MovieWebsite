@@ -27,8 +27,8 @@ import "./Navbar.css"
 export const Admin = () => {
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
-    const [email,setemail]=useState("admin@321")
-    const [password,setpassword]=useState("admin@123")
+    const [email,setemail]=useState("")
+    const [password,setpassword]=useState("")
     const toast = useToast()
     const navigate=useNavigate()
 
@@ -37,6 +37,8 @@ export const Admin = () => {
         email,
         password
     }
+    //email admin@321
+    //password admin@123
     console.log(userData)
     if(email=="admin@321"&&password=="admin@123"){
         toast({
