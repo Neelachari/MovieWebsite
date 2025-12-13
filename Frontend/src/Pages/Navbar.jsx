@@ -14,6 +14,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  MenuDivider,
   DrawerContent,
   IconButton,
   useDisclosure,
@@ -44,15 +45,24 @@ import { useToast } from '@chakra-ui/react'
 import { LOGOUT_SUCCESS } from '../Redux/Auth/ActionTypes';
 
 export default function Navbar() {
-  const auth  = useSelector((store) => store.authReducer.isAuth)
+  const authState = useSelector((store) => store.authReducer)
   const { isOpen, onClose, onOpen } = useDisclosure();
   const [data,setData]=useState([])
   const dispatch=useDispatch()
-  const Movies=useSelector((store)=> store.productReducer.movies)
- 
-  const videoId = new URL("https://www.youtube.com/embed/tABlzTH8G9o?si=frgn1yoLc3W6RwJS").searchParams.get("v");
+  const navigate = useNavigate()
+  const toast = useToast()
 
-console.log(auth, "I AM AUTH")
+  const handleLogout = () => {
+    dispatch(logout())
+    toast({
+      title: 'Logged out',
+      description: 'You have been logged out successfully',
+      status: 'info',
+      duration: 3000,
+      isClosable: true,
+    })
+    navigate('/Login')
+  }
 
 
   useEffect(()=>{
@@ -92,35 +102,22 @@ console.log(auth, "I AM AUTH")
 
 
 const SidebarContent = ({ ...props }) => {
-  const auth = useSelector((store) => store.authReducer.isAuth);
-  // const token = useSelector((store) => store.authReducer.token);
-  const User = useSelector((store) => store.authReducer.users);
+  const authState = useSelector((store) => store.authReducer)
   const toast = useToast()
   const dispatch=useDispatch()
   const navigate=useNavigate()
 
  const handleLogout = () => {
-  
     dispatch(logout())
-        .then(() => {
-            toast({
-                position: 'top',
-                isClosable: true,
-                duration: 500,
-                status: "success",
-                render: () => (
-                    <Box color='white' p={3} bg='blue.500'>
-                        Logout successfully! 😊 
-                    </Box>
-                ),
-            });
-            
-        })
-        setTimeout(()=>{
-          navigate(window.location.reload());
-        },1000)
-       
-};
+    toast({
+      title: 'Logged out',
+      description: 'You have been logged out successfully',
+      status: 'info',
+      duration: 3000,
+      isClosable: true,
+    })
+    navigate('/Login')
+  }
 
 
 
@@ -210,21 +207,42 @@ const SidebarContent = ({ ...props }) => {
              
               _hover={{ bg: useColorModeValue('#000018', 'gray.900'), color: useColorModeValue('#000014', 'white.200'), textDecoration: 'none' }}
             >
-             {auth ? <Avatar
+             {authState.isAuth ? <Avatar
                 size={'sm'}
                 name="User"
                 src="https://avatars2.githubusercontent.com/u/37842853?v=4"
               /> : <FaUserCircle  size={'30px'} />  
              }
             </MenuButton>
-            <MenuList fontSize={15} zIndex={5555} background='transparent'>
+            <MenuList fontSize={15} zIndex={5555} bg="rgba(0, 0, 0, 0.9)" backdropFilter="blur(10px)" border="1px solid rgba(255, 255, 255, 0.1)">
               
-              {auth  ? <MenuItem background='transparent' color="white" onClick={handleLogout} >Logout</MenuItem>  :
+              {authState.isAuth  ? 
                 <Box>
-                  <MenuItem as={Link} to="/Login" background='transparent' color="white" >
+                  <MenuItem bg="transparent" color="white" _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}>
+                    <VStack align="start" spacing={0}>
+                      <Text fontWeight="bold">{authState.Name || 'User'}</Text>
+                      <Text fontSize="sm" color="gray.400">Welcome back!</Text>
+                    </VStack>
+                  </MenuItem>
+                  <MenuItem bg="transparent" color="white" _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}>
+                    <VStack align="start" spacing={0}>
+                      <Text fontSize="sm">Subscription</Text>
+                      <Text fontSize="xs" color="gray.400">
+                        {authState.subscription ? `${authState.subscription.plan} - ${authState.subscription.active ? 'Active' : 'Expired'}` : 'No active plan'}
+                      </Text>
+                    </VStack>
+                  </MenuItem>
+                  <MenuDivider />
+                  <MenuItem bg="transparent" color="white" _hover={{ bg: "rgba(255, 255, 255, 0.1)" }} onClick={handleLogout}>
+                    Logout
+                  </MenuItem>
+                </Box>
+                :
+                <Box>
+                  <MenuItem as={Link} to="/Login" bg="transparent" color="white" _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}>
                     Login
                   </MenuItem>
-                  <MenuItem as={Link} to="/SignUp" background='transparent' color="white" >
+                  <MenuItem as={Link} to="/SignUp" bg="transparent" color="white" _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}>
                     SignUp
                   </MenuItem>
                 </Box>

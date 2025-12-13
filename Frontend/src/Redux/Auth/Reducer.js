@@ -1,12 +1,13 @@
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, MYSPACE_UPDATE, POST_SIGN_SUCCESS, } from "./ActionTypes"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, MYSPACE_UPDATE, POST_SIGN_SUCCESS, SUBSCRIPTION_SUCCESS } from "./ActionTypes"
 
 const initialState={
     users:[],
     Account_info:[],
     UserId:"",
     Name:"",
-    isAuth:false,
-    token:"",
+    isAuth:!!localStorage.getItem('accessToken'), // if token exists, consider auth
+    token: localStorage.getItem('accessToken') || "",
+    subscription: null, // add subscription
     isLoading:false,
     isError:false
 }
@@ -25,8 +26,12 @@ export const Reducer =(state=initialState,{type,payload,UserId,Account_info,Name
         case MYSPACE_UPDATE:{
             return {...state,Account_info:payload}
         }
+        case SUBSCRIPTION_SUCCESS:{
+            return {...state, subscription: payload}
+        }
         case LOGOUT_SUCCESS:{
-            return {...state, isLoading:false, isAuth:false, token :localStorage.removeItem('accessToken'), isError:false}
+            localStorage.removeItem('accessToken');
+            return {...state, isLoading:false, isAuth:false, token:"", isError:false, subscription: null}
         }
         case POST_SIGN_SUCCESS:{
             return {...state, isError:false, isLoading:false,  users:[...state.users, payload]}

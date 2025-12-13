@@ -8,6 +8,7 @@ import Postermovie from "../Imges/MoviePosterscreen.png"
 import './Movie.css'
 import "./Navbar.css"
 import Logo from "../Imges/PLY.png"
+import { motion } from 'framer-motion'
 
 
 export const Movies = () => {
@@ -45,15 +46,27 @@ export const Movies = () => {
            />
         </video> 
       </Box>
-       <Box className='Movies'>
-      {
-        isLoading ? <Box as="main"  height="700px" w={"100%"} paddingLeft={"500px"} mt={"200px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /><Text fontSize={"xx-large"} color={"gray"} ml={"-20px"}>Loading...</Text></Box> :Movies.length>0 && Movies?.map((e)=>{
-          return <MoviesCard  key={e.id} {...e}/>
-        }  )  
-
-        
-      }
-      </Box>
+       <motion.div
+         initial="hidden"
+         animate="visible"
+         variants={{
+           hidden: { opacity: 0 },
+           visible: {
+             opacity: 1,
+             transition: {
+               staggerChildren: 0.1
+             }
+           }
+         }}
+       >
+         <Box className='Movies'>
+         {
+           isLoading ? <Box as="main"  height="700px" w={"100%"} paddingLeft={"500px"} mt={"200px"} bg={useColorModeValue('black', 'gray.800')} ><CircularProgress isIndeterminate color='blue.300' /><Text fontSize={"xx-large"} color={"gray"} ml={"-20px"}>Loading...</Text></Box> :Movies.length>0 && Movies?.map((e)=>{
+             return <MoviesCard  key={e.id} {...e}/>
+           }  )  
+         }
+         </Box>
+       </motion.div>
     </Box>
   )
 }

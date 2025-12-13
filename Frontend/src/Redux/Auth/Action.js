@@ -1,5 +1,5 @@
 import axios from "axios"
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS, } from "./ActionTypes"
+import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGOUT_SUCCESS, POST_SIGN_SUCCESS, SUBSCRIPTION_SUCCESS } from "./ActionTypes"
 import { DELETE_PRODUCT_SUCCESS } from "../MovieReducer/ActionTypes"
 
 
@@ -8,12 +8,25 @@ export const login=(userData)=>(dispatch)=>{
     dispatch({type:LOGIN_REQUEST})
     return axios.post(`https://movies-data-fdb6.onrender.com/users/login`,userData)
     .then((res)=>{
-        dispatch({type:LOGIN_SUCCESS, Name:res.data.Name, paylaod: res.data.token, UserId:res.data.UserId, Account_info:res.data.Account_info})
+        localStorage.setItem('accessToken', res.data.token);
+        dispatch({type:LOGIN_SUCCESS, payload: res.data.token, Name:res.data.Name, UserId:res.data.UserId, Account_info:res.data.Account_info})
         
         console.log(res.data)
+        // Fetch subscription after login
+        const token = res.data.token;
+        axios.get(`https://movies-data-fdb6.onrender.com/subscription/subscription`, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then(subRes => {
+            dispatch({type: SUBSCRIPTION_SUCCESS, payload: subRes.data});
+        })
+        .catch(err => {
+            console.log('No subscription or error:', err);
+            dispatch({type: SUBSCRIPTION_SUCCESS, payload: null});
+        });
     })
     .catch((err)=>{
-        dispatch({type:LOGIN_FAILURE, paylaod: err.message})
+        dispatch({type:LOGIN_FAILURE, payload: err.message})
     })
 
     
@@ -33,17 +46,9 @@ export const login=(userData)=>(dispatch)=>{
 
 
 // Logout request
-// action.js
-export const logout = ()=>  (dispatch) => {
-    dispatch({ type: LOGIN_REQUEST });
-      return axios.post(`https://movies-data-fdb6.onrender.com/users/logout`)
-        .then((res) => {
-            dispatch({ type: LOGOUT_SUCCESS  });
-        })
-        .catch((error) => {
-            console.error("Logout error:", error);
-            // Handle error, dispatch an error action if needed
-        });
+export const logout = () => (dispatch) => {
+    localStorage.removeItem('accessToken');
+    dispatch({ type: LOGOUT_SUCCESS });
 };
 // export const logout = (token) => (dispatch) => {
 //     return axios

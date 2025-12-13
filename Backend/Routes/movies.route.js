@@ -1,6 +1,7 @@
 const express = require('express')
 const MoviesRoute = express.Router()
 const MoviesModal = require('../Model/Movies.model')
+const SubscriptionModel = require('../Model/Subscription.model')
 const {auth}=require("../Middleware/auth.middleware")
 
 MoviesRoute.get('/movie', async (req, res) => {
@@ -9,7 +10,7 @@ MoviesRoute.get('/movie', async (req, res) => {
         res.status(200).send(Post)
        
       } catch (error) {
-          res.status(400).send({error:err.message})
+          res.status(400).send({error:error.message})
       }
 })
 
@@ -41,16 +42,22 @@ MoviesRoute.post('/movie', async (req, res) => {
 
 
 MoviesRoute.patch('/movie/:id', async (req, res) => {
-    let UpdatePost = await MoviesModal.updateOne({ _id: req.params.id }, req.body)
-
-    res.send({ message: "The Post has been updated Successfully", UpdatePost })
+    try {
+        let UpdatePost = await MoviesModal.updateOne({ _id: req.params.id }, req.body)
+        res.send({ message: "The Post has been updated Successfully", UpdatePost })
+    } catch (error) {
+        res.status(400).send({ error: error.message })
+    }
 })
 
 
 MoviesRoute.delete('/movie/:id', async (req, res) => {
-    let deletePost = await MoviesModal.deleteOne({ _id: req.params.id })
-    
-    res.send({ message: "The Post has been deleted Successfully", deletePost })
+    try {
+        let deletePost = await MoviesModal.deleteOne({ _id: req.params.id })
+        res.send({ message: "The Post has been deleted Successfully", deletePost })
+    } catch (error) {
+        res.status(400).send({ error: error.message })
+    }
 })
 
 
